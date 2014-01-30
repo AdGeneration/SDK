@@ -358,7 +358,7 @@
 		F3BC715C1897996A00180015 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -397,7 +397,7 @@
 		F3BC715D1897996A00180015 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -437,8 +437,7 @@
 				INFOPLIST_FILE = "ADGSample/ADGSample-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/akiyoshitakao/Documents/work/repo/sdk/ADG_iOSSDK,
-					/Users/akiyoshitakao/Documents/work/repo/sdk/Samples/iOS/ADGSample/ADGSample/sdk,
+					"/Users/akiyoshitakao/Documents/work/repo/sdk/Samples/iOS/ADGSample/ADGSample/sdk/**",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -455,8 +454,7 @@
 				INFOPLIST_FILE = "ADGSample/ADGSample-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/akiyoshitakao/Documents/work/repo/sdk/ADG_iOSSDK,
-					/Users/akiyoshitakao/Documents/work/repo/sdk/Samples/iOS/ADGSample/ADGSample/sdk,
+					"/Users/akiyoshitakao/Documents/work/repo/sdk/Samples/iOS/ADGSample/ADGSample/sdk/**",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
