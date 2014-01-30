@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+		android:icon="@drawable/app_icon"
+        android:label="@string/app_name">
+		<activity
+            android:name="com.socdm.d.adgeneration.plugin.unity.ADGNativeActivity"
+            android:label="@string/app_name"
+            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"
+		>
+		<meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="true" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+		</activity>
+<activity android:name="com.socdm.d.adgeneration.ADGClickWebView"
+          android:configChanges="orientation|keyboardHidden" />
+<activity android:name="com.socdm.d.adgeneration.ADGVideoView"
+          android:configChanges="orientation|keyboardHidden" />
+    </application>
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+</manifest>
