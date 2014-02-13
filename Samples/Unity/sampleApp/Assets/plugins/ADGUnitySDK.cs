@@ -116,12 +116,10 @@ public class ADGUnitySDK : MonoBehaviour {
 		#if UNITY_IPHONE
 		if(Application.platform == RuntimePlatform.IPhonePlayer){
 			_showADG(adgni);
-			_resumeADG(adgni);
 		}
 		#elif UNITY_ANDROID
 		if(Application.platform == RuntimePlatform.Android){
 			androidPlugin.Call("showADG");
-			androidPlugin.Call("resumeADG");
 		}
 		#endif
 	}
@@ -131,12 +129,10 @@ public class ADGUnitySDK : MonoBehaviour {
 		#if UNITY_IPHONE
 		if(Application.platform == RuntimePlatform.IPhonePlayer){
 			_hideADG(adgni);
-			_pauseADG(adgni);
 		}
 		#elif UNITY_ANDROID
 		if(Application.platform == RuntimePlatform.Android){
 			androidPlugin.Call("hideADG");
-			androidPlugin.Call("pauseADG");
 		}
 		#endif
 	}

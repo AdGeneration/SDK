@@ -28,7 +28,7 @@
 		F3BC717918979B3900180015 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BC717218979B3900180015 /* QuartzCore.framework */; };
 		F3BC717A18979B3900180015 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BC717318979B3900180015 /* Security.framework */; };
 		F3BC717B18979B3900180015 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BC717418979B3900180015 /* SystemConfiguration.framework */; };
-		F3CECD14189A15B00089268D /* libADG1.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3CECD13189A15B00089268D /* libADG1.2.0.a */; };
+		F3E24F5E18AC586F00BE1E34 /* libADG1.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E24F5D18AC586F00BE1E34 /* libADG1.2.1.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +75,7 @@
 		F3CECD10189A15B00089268D /* ADGMraidController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGMraidController.h; path = ADGSample/sdk/ADGMraidController.h; sourceTree = "<group>"; };
 		F3CECD11189A15B00089268D /* ADGUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGUtil.h; path = ADGSample/sdk/ADGUtil.h; sourceTree = "<group>"; };
 		F3CECD12189A15B00089268D /* ADGVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGVideoViewController.h; path = ADGSample/sdk/ADGVideoViewController.h; sourceTree = "<group>"; };
-		F3CECD13189A15B00089268D /* libADG1.2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libADG1.2.0.a; path = ADGSample/sdk/libADG1.2.0.a; sourceTree = "<group>"; };
+		F3E24F5D18AC586F00BE1E34 /* libADG1.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libADG1.2.1.a; path = ADGSample/sdk/libADG1.2.1.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +84,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3BC717518979B3900180015 /* AdSupport.framework in Frameworks */,
-				F3CECD14189A15B00089268D /* libADG1.2.0.a in Frameworks */,
 				F3BC717618979B3900180015 /* CoreTelephony.framework in Frameworks */,
+				F3E24F5E18AC586F00BE1E34 /* libADG1.2.1.a in Frameworks */,
 				F3BC717718979B3900180015 /* EventKit.framework in Frameworks */,
 				F3BC717818979B3900180015 /* MediaPlayer.framework in Frameworks */,
 				F3BC717918979B3900180015 /* QuartzCore.framework in Frameworks */,
@@ -194,6 +194,7 @@
 		F3BC716D18979B0800180015 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
+				F3E24F5D18AC586F00BE1E34 /* libADG1.2.1.a */,
 				F3CECD0C189A15B00089268D /* ADGAdWebView.h */,
 				F3CECD0D189A15B00089268D /* ADGBrowserViewController.h */,
 				F3CECD0E189A15B00089268D /* ADGConstants.h */,
@@ -201,7 +202,6 @@
 				F3CECD10189A15B00089268D /* ADGMraidController.h */,
 				F3CECD11189A15B00089268D /* ADGUtil.h */,
 				F3CECD12189A15B00089268D /* ADGVideoViewController.h */,
-				F3CECD13189A15B00089268D /* libADG1.2.0.a */,
 			);
 			name = sdk;
 			sourceTree = "<group>";
@@ -438,6 +438,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/ADGSample/sdk/**",
+					/Users/akiyoshitakao/Documents/work/repo/sdk/Samples/iOS/ADGSample/ADGSample/sdk,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -455,6 +456,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/ADGSample/sdk/**",
+					/Users/akiyoshitakao/Documents/work/repo/sdk/Samples/iOS/ADGSample/ADGSample/sdk,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
