@@ -1,5 +1,5 @@
 #define kADG_TYPE    @"2"
-#define kADG_VERSION    @"1.2.1"
+#define kADG_VERSION    @"1.2.2"
 
 #define kADGSlideAnimationDuration     0.5
 
