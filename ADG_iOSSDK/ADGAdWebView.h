@@ -1,3 +1,11 @@
+//
+//  ADGAdWebView.h
+//  ADGModify
+//
+//  Created by    on 2014/01/08.
+//  Copyright (c) 2014年 mediba inc. All rights reserved.
+//
+
 #import <UIKit/UIKit.h>
 
 typedef enum{
