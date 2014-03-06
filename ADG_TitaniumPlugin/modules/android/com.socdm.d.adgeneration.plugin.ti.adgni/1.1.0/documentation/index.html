@@ -1,0 +1,28 @@
+<h1>Titanium Android Module for AdGeneration</h1>
+<h2>Description</h2>
+<p>Titanium Android Module for AdGeneration</p>
+<h2>Accessing the androidmodule Module</h2>
+<p>To access this module from JavaScript, you would do the following:</p>
+<pre><code>var androidmodule = require("com.socdm.d.adgeneration.plugin.ti.adgni");
+</code></pre>
+<p>The androidmodule variable is a reference to the Module object. </p>
+<h2>Example</h2>
+<p>var win = Ti.UI.createWindow({
+    title:'Window',
+    backgroundColor:'white'
+});
+win.open();</p>
+<p>var adgni = require('com.socdm.d.adgeneration.plugin.ti.adgni');</p>
+<p>var adgview = adgni.createView({
+    aosLocationId:"10724",
+    width:320,
+    height:50,
+    top:0,
+    left:0,
+    adtype:"SP",
+});</p>
+<p>win.add(adgview);</p>
+<h2>Author</h2>
+<p>mediba.inc</p>
+<h2>License</h2>
+<p>mediba.inc. All rights reserved.</p>

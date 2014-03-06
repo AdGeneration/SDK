@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F3223EC418BF12AF0088F1B8 /* libADG1.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3223EC318BF12AF0088F1B8 /* libADG1.3.0.a */; };
+		F311012318C802E3006B2BA7 /* libADG1.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F311012218C802E3006B2BA7 /* libADG1.3.1.a */; };
 		F3BC71301897996900180015 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BC712F1897996900180015 /* Foundation.framework */; };
 		F3BC71321897996900180015 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BC71311897996900180015 /* CoreGraphics.framework */; };
 		F3BC71341897996900180015 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BC71331897996900180015 /* UIKit.framework */; };
@@ -42,8 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F311012218C802E3006B2BA7 /* libADG1.3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libADG1.3.1.a; path = ADGSample/sdk/libADG1.3.1.a; sourceTree = "<group>"; };
 		F3223EC218BF12AF0088F1B8 /* ADGInterstitialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGInterstitialManager.h; path = ADGSample/sdk/ADGInterstitialManager.h; sourceTree = "<group>"; };
-		F3223EC318BF12AF0088F1B8 /* libADG1.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libADG1.3.0.a; path = ADGSample/sdk/libADG1.3.0.a; sourceTree = "<group>"; };
 		F3BC712C1897996900180015 /* ADGSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADGSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3BC712F1897996900180015 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F3BC71311897996900180015 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -90,8 +90,8 @@
 				F3BC717818979B3900180015 /* MediaPlayer.framework in Frameworks */,
 				F3BC717918979B3900180015 /* QuartzCore.framework in Frameworks */,
 				F3BC717A18979B3900180015 /* Security.framework in Frameworks */,
-				F3223EC418BF12AF0088F1B8 /* libADG1.3.0.a in Frameworks */,
 				F3BC717B18979B3900180015 /* SystemConfiguration.framework in Frameworks */,
+				F311012318C802E3006B2BA7 /* libADG1.3.1.a in Frameworks */,
 				F3BC71321897996900180015 /* CoreGraphics.framework in Frameworks */,
 				F3BC71341897996900180015 /* UIKit.framework in Frameworks */,
 				F3BC71301897996900180015 /* Foundation.framework in Frameworks */,
@@ -195,8 +195,8 @@
 		F3BC716D18979B0800180015 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
+				F311012218C802E3006B2BA7 /* libADG1.3.1.a */,
 				F3223EC218BF12AF0088F1B8 /* ADGInterstitialManager.h */,
-				F3223EC318BF12AF0088F1B8 /* libADG1.3.0.a */,
 				F3CECD0C189A15B00089268D /* ADGAdWebView.h */,
 				F3CECD0D189A15B00089268D /* ADGBrowserViewController.h */,
 				F3CECD0E189A15B00089268D /* ADGConstants.h */,
@@ -441,6 +441,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/ADGSample/sdk/**",
+					/Users/akiyoshitakao/Documents/work/repo/sdk/Samples/iOS/ADGSample/ADGSample/sdk,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -460,6 +461,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/ADGSample/sdk/**",
+					/Users/akiyoshitakao/Documents/work/repo/sdk/Samples/iOS/ADGSample/ADGSample/sdk,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
