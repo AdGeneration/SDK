@@ -14,10 +14,13 @@ public class ADGUnitySDK : MonoBehaviour {
 	const string VERTICAL = "TOP";
 	const string MESSAGEOBJNAME = "MainCamera";
 
+	const int WIDTH = 0;
+	const int HEIGHT = 0;
+
 	#if UNITY_IPHONE
 	private static IntPtr adgni;
 	[DllImport ("__Internal")]
-	private static extern IntPtr _initADG (string adid , string adtype , float x , float y , string objName);
+	private static extern IntPtr _initADG (string adid , string adtype , float x , float y , string objName , int width , int height);
 	[DllImport ("__Internal")]
 	private static extern void _renewADG (IntPtr adgni , string adid , string adtype , float x , float y , string objName);
 	[DllImport ("__Internal")]
@@ -52,13 +55,13 @@ public class ADGUnitySDK : MonoBehaviour {
 			myInstance = gameObject.AddComponent<ADGUnitySDK>();
 			#if UNITY_IPHONE
 			if(Application.platform == RuntimePlatform.IPhonePlayer){
-				adgni = _initADG(IOS_LOCATIONID , ADTYPE, X , Y , MESSAGEOBJNAME);
+				adgni = _initADG(IOS_LOCATIONID , ADTYPE, X , Y , MESSAGEOBJNAME , WIDTH , HEIGHT);
 			}
 			#elif UNITY_ANDROID
 			if(Application.platform == RuntimePlatform.Android){
 				AndroidJavaClass manager = new AndroidJavaClass("com.socdm.d.adgeneration.plugin.unity.ADGNativeManager");
 				androidPlugin = manager.CallStatic<AndroidJavaObject>("instance");
-				androidPlugin.Call("initADG", ANDROID_LOCATIONID , ADTYPE , HORIZONTAL , VERTICAL ,  MESSAGEOBJNAME);
+				androidPlugin.Call("initADG", ANDROID_LOCATIONID , ADTYPE , HORIZONTAL , VERTICAL ,  MESSAGEOBJNAME , WIDTH , HEIGHT);
 			}
 			#endif
 		}

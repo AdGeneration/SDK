@@ -20,29 +20,41 @@ extern UIViewController *UnityGetGLViewController();
 
 @synthesize adg = adg_;
 
-- (void)setParams:(UIViewController *)viewCon adid:(NSString *)adid adtype:(NSString *)adtype x:(float)x y:(float)y objName:(NSString *)objName{
+- (void)setParams:(UIViewController *)viewCon adid:(NSString *)adid adtype:(NSString *)adtype x:(float)x y:(float)y objName:(NSString *)objName width:(int)width height:(int)height{
     //size
     NSInteger adTypeInt = 0;
-    if([adtype isEqualToString:@"SP"]){
-        adTypeInt = kADG_AdType_Sp;
+    if([adtype isEqualToString:@"FREE"] && width > 0 && height > 0){
+        adgparam_ = @{
+                      @"locationid" : adid,
+                      @"adtype" : @(kADG_AdType_Free),
+                      @"originx" : @(x),
+                      @"originy" : @(y),
+                      @"w" : @(width),
+                      @"h" : @(height)
+                      };
     }
-    else if([adtype isEqualToString:@"LARGE"]){
-        adTypeInt = kADG_AdType_Large;
+    else{
+        if([adtype isEqualToString:@"SP"]){
+            adTypeInt = kADG_AdType_Sp;
+        }
+        else if([adtype isEqualToString:@"LARGE"]){
+            adTypeInt = kADG_AdType_Large;
+        }
+        else if([adtype isEqualToString:@"RECT"]){
+            adTypeInt = kADG_AdType_Rect;
+        }
+        else if([adtype isEqualToString:@"TABLET"]){
+            adTypeInt = kADG_AdType_Tablet;
+        }
+        
+        //set parameters
+        adgparam_ = @{
+                      @"locationid" : adid,
+                      @"adtype" : @(adTypeInt),
+                      @"originx" : @(x),
+                      @"originy" : @(y)
+                      };
     }
-    else if([adtype isEqualToString:@"RECT"]){
-        adTypeInt = kADG_AdType_Rect;
-    }
-    else if([adtype isEqualToString:@"TABLET"]){
-        adTypeInt = kADG_AdType_Tablet;
-    }
-    
-    //set parameters
-    adgparam_ = @{
-                               @"locationid" : adid, 
-                               @"adtype" : @(adTypeInt), 
-                               @"originx" : @(x), 
-                               @"originy" : @(y)  
-                               };
     
     [adgparam_ retain];
     
@@ -144,7 +156,7 @@ extern UIViewController *UnityGetGLViewController();
 #pragma mark definition for NativeInterface
 
 extern "C"{
-    void *_initADG(const char* adid , const char* adtype , float x , float y , const char* objName);
+    void *_initADG(const char* adid , const char* adtype , float x , float y , const char* objName , int width , int height);
     void _renewADG(void *adgni , const char* adid , const char* adtype , float x , float y , const char* objName);
     void _pauseADG(void *adgni);
     void _resumeADG(void *adgni);
@@ -156,14 +168,14 @@ extern "C"{
 
 #pragma mark method for NativeInterface
 
-void *_initADG(const char* adid , const char* adtype , float x , float y , const char* objName)
+void *_initADG(const char* adid , const char* adtype , float x , float y , const char* objName , int width , int height)
 {
     NSString *adidStr = [NSString stringWithCString:adid encoding:NSUTF8StringEncoding];
     NSString *adtypeStr = [NSString stringWithCString:adtype encoding:NSUTF8StringEncoding];
     NSString *objNameStr = [NSString stringWithCString:objName encoding:NSUTF8StringEncoding];
     
     id adgni = [[ADGNI alloc] init];
-    [adgni setParams:UnityGetGLViewController() adid:adidStr adtype:adtypeStr x:x y:y objName:objNameStr];
+    [adgni setParams:UnityGetGLViewController() adid:adidStr adtype:adtypeStr x:x y:y objName:objNameStr width:width height:height];
     
     return adgni;
 }
