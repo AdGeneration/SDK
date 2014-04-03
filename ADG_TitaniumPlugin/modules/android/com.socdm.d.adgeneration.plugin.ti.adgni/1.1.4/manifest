@@ -2,7 +2,7 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 1.1.3
+version: 1.1.4
 apiversion: 2
 description: Titanium Plugin for AdGeneration
 author: mediba.inc
@@ -11,8 +11,8 @@ copyright: mediba.inc. All rights reserved.
 
 
 # these should not be edited
-name: iosmodule
+name: androidmodule
 moduleid: com.socdm.d.adgeneration.plugin.ti.adgni
-guid: b8cd5707-c4c5-4b1e-9d6b-f7e941bfa30c
-platform: iphone
+guid: 1b8f0d5d-fdad-43f2-a028-e9437cad49ad
+platform: android
 minsdk: 3.0.0.GA

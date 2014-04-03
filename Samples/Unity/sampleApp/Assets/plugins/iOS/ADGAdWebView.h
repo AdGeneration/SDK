@@ -28,6 +28,8 @@ typedef enum{
 - (void) stopLoading;
 - (UIWebView*) frontAdWebView;
 - (UIWebView*) backAdWebView;
+- (BOOL) isNoAd:(ADGADVIEW_TARGET)target;
+- (void) resetNoAdCount;
 @end
 
 @protocol ADGAdWebViewDelegate
@@ -37,6 +39,5 @@ typedef enum{
 - (BOOL)adgAdWebView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType source:(ADGADVIEW_TARGET)source;
 - (void)adgAdWebViewDidFinishLoad:(UIWebView *)webView source:(ADGADVIEW_TARGET)source;
 - (void)adgAdWebView:(UIWebView *)webView didFailLoadWithError:(NSError *)error source:(ADGADVIEW_TARGET)source;
-- (void) adgGetNoAdAtFirst;
 @end
 
