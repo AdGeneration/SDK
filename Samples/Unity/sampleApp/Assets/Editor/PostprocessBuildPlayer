@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'xcodeproj'
+
+if ARGV[1] != "iPhone"
+  exit
+end
+
+print "ios build start\n"
+
+PROJ_PATH = ARGV[0] + "/Unity-iPhone.xcodeproj"
+
+
+proj = Xcodeproj::Project.open(PROJ_PATH)
+
+
+proj.targets.each do |target|
+    # Add Frameworks
+    target.add_system_framework("AdSupport")
+    target.add_system_framework("CoreTelephony")
+    target.add_system_framework("Security")
+    target.add_system_framework("EventKit")
+end
+
+proj.save(PROJ_PATH)
+

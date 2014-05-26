@@ -163,7 +163,7 @@ extern "C"{
     void _hideADG(void *adgni);
     void _showADG(void *adgni);
     void _finishADG(void *adgni);
-    void _changeLocationADG(void *adgni , float x , float y);
+    void _changeLocationADG(void *adgni , int horizontal, int vertical, float left, float right, float top, float bottom);
 }
 
 #pragma mark method for NativeInterface
@@ -209,9 +209,51 @@ void _showADG(void *adgni){
     [adgni_temp show];
 }
 
-void _changeLocationADG(void *adgni , float x , float y){
+enum Horizontal {
+    LEFT                = 1 << 0,
+    CENTER_HORIZONTAL   = 1 << 1,
+    RIGHT               = 1 << 2,
+};
+
+enum Vertical {
+    TOP             = 1 << 0,
+    CENTER_VERTICAL = 1 << 1,
+    BOTTOM          = 1 << 2,
+};
+
+void _changeLocationADG(void *adgni , int horizontal, int vertical, float left, float top, float right, float bottom) {
+    
+    CGPoint point = CGPointZero;
+    CGSize screenSize = UnityGetGLViewController().view.bounds.size;
     ADGNI *adgni_temp = (ADGNI *)adgni;
-    [adgni_temp changeLocation:x y:y];
+    CGSize bannerSize = adgni_temp.adg.view.bounds.size;
+    
+    if((horizontal & LEFT) == LEFT) {
+        point.x = 0;
+    }
+    if((horizontal & RIGHT) == RIGHT) {
+        point.x = screenSize.width - bannerSize.width;
+    }
+    if((horizontal & CENTER_HORIZONTAL) == CENTER_HORIZONTAL) {
+        point.x = (screenSize.width - bannerSize.width)/2;
+    }
+    
+    if((vertical & TOP) == TOP) {
+        point.y = 0;
+    }
+    if((vertical & CENTER_VERTICAL) == CENTER_VERTICAL) {
+        point.y = (screenSize.height - bannerSize.height)/2;
+    }
+    if((vertical & BOTTOM) == BOTTOM) {
+        point.y = screenSize.height - bannerSize.height;
+    }
+    
+    point.x += left;
+    point.y += top;
+    point.x -= right;
+    point.y -= bottom;
+    
+    [adgni_temp changeLocation:point.x y:point.y];
 }
 
 void _finishADG(void *adgni){
