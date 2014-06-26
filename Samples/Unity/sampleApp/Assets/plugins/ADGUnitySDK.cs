@@ -65,6 +65,12 @@ public class ADGUnitySDK : MonoBehaviour {
 		public float right;
 		public float top;
 		public float bottom;
+        public Margin(Margin m) {
+            left = m.left;
+            right = m.right;
+            top = m.top;
+            bottom = m.bottom;
+        }
 	}
 	[System.SerializableAttribute]
 	public class Icon {
@@ -85,7 +91,7 @@ public class ADGUnitySDK : MonoBehaviour {
 
 
 	#if UNITY_IPHONE
-	private IntPtr adgni;
+	private IntPtr adgni = IntPtr.Zero;
 	[DllImport ("__Internal")]
 	private static extern IntPtr _initADG (string adid , string adtype , float x , float y , string objName , int width , int height);
 	[DllImport ("__Internal")]
@@ -160,7 +166,9 @@ public class ADGUnitySDK : MonoBehaviour {
 		gameObject.hideFlags = HideFlags.HideAndDontSave;//A combination of not shown in the hierarchy and not saved to to scenes.
 #if UNITY_IPHONE
 		if(Application.platform == RuntimePlatform.IPhonePlayer){
-			adgni = _initADG(account.iOS.id , ToSize(account.iOS.size), 0, 0, this.gameObject.name, width, height);
+            if(adgni == IntPtr.Zero) {
+			    adgni = _initADG(account.iOS.id , ToSize(account.iOS.size), 0, 0, this.gameObject.name, width, height);
+            }
 		}
 #elif UNITY_ANDROID
 		if(Application.platform == RuntimePlatform.Android){
@@ -173,7 +181,10 @@ public class ADGUnitySDK : MonoBehaviour {
 	public void finishADG(){
 		#if UNITY_IPHONE
 		if(Application.platform == RuntimePlatform.IPhonePlayer){
-			_finishADG(adgni);
+            if(adgni != IntPtr.Zero) {
+			    _finishADG(adgni);
+                adgni = IntPtr.Zero;
+            }
 		}
 		#elif UNITY_ANDROID
 		if(Application.platform == RuntimePlatform.Android){
