@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F3813998192C5BE300E72F54 /* libADG1.3.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3813997192C5BE300E72F54 /* libADG1.3.3.a */; };
+		11867172196A809C00997968 /* libADG1.3.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11867171196A809C00997968 /* libADG1.3.4.a */; };
 		F3BC71301897996900180015 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BC712F1897996900180015 /* Foundation.framework */; };
 		F3BC71321897996900180015 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BC71311897996900180015 /* CoreGraphics.framework */; };
 		F3BC71341897996900180015 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BC71331897996900180015 /* UIKit.framework */; };
@@ -42,8 +42,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F3223EC218BF12AF0088F1B8 /* ADGInterstitialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGInterstitialManager.h; path = ADGSample/sdk/ADGInterstitialManager.h; sourceTree = "<group>"; };
-		F3813997192C5BE300E72F54 /* libADG1.3.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libADG1.3.3.a; path = ADGSample/sdk/libADG1.3.3.a; sourceTree = "<group>"; };
+		11867164196A809C00997968 /* ADGAdWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGAdWebView.h; path = ADGSample/sdk/ADGAdWebView.h; sourceTree = "<group>"; };
+		11867165196A809C00997968 /* ADGBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGBrowserViewController.h; path = ADGSample/sdk/ADGBrowserViewController.h; sourceTree = "<group>"; };
+		11867166196A809C00997968 /* ADGConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGConstants.h; path = ADGSample/sdk/ADGConstants.h; sourceTree = "<group>"; };
+		11867167196A809C00997968 /* ADGCookieUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGCookieUtil.h; path = ADGSample/sdk/ADGCookieUtil.h; sourceTree = "<group>"; };
+		11867168196A809C00997968 /* ADGInterstitialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGInterstitialManager.h; path = ADGSample/sdk/ADGInterstitialManager.h; sourceTree = "<group>"; };
+		11867169196A809C00997968 /* ADGInterstitialWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGInterstitialWindow.h; path = ADGSample/sdk/ADGInterstitialWindow.h; sourceTree = "<group>"; };
+		1186716A196A809C00997968 /* ADGLibNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGLibNetwork.h; path = ADGSample/sdk/ADGLibNetwork.h; sourceTree = "<group>"; };
+		1186716B196A809C00997968 /* ADGLibString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGLibString.h; path = ADGSample/sdk/ADGLibString.h; sourceTree = "<group>"; };
+		1186716C196A809C00997968 /* ADGManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGManagerViewController.h; path = ADGSample/sdk/ADGManagerViewController.h; sourceTree = "<group>"; };
+		1186716D196A809C00997968 /* ADGMraidController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGMraidController.h; path = ADGSample/sdk/ADGMraidController.h; sourceTree = "<group>"; };
+		1186716E196A809C00997968 /* ADGReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGReachability.h; path = ADGSample/sdk/ADGReachability.h; sourceTree = "<group>"; };
+		1186716F196A809C00997968 /* ADGUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGUtil.h; path = ADGSample/sdk/ADGUtil.h; sourceTree = "<group>"; };
+		11867170196A809C00997968 /* ADGVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGVideoViewController.h; path = ADGSample/sdk/ADGVideoViewController.h; sourceTree = "<group>"; };
+		11867171196A809C00997968 /* libADG1.3.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libADG1.3.4.a; path = ADGSample/sdk/libADG1.3.4.a; sourceTree = "<group>"; };
 		F3BC712C1897996900180015 /* ADGSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADGSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3BC712F1897996900180015 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F3BC71311897996900180015 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -70,13 +82,6 @@
 		F3BC717218979B3900180015 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F3BC717318979B3900180015 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F3BC717418979B3900180015 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		F3CECD0C189A15B00089268D /* ADGAdWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGAdWebView.h; path = ADGSample/sdk/ADGAdWebView.h; sourceTree = "<group>"; };
-		F3CECD0D189A15B00089268D /* ADGBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGBrowserViewController.h; path = ADGSample/sdk/ADGBrowserViewController.h; sourceTree = "<group>"; };
-		F3CECD0E189A15B00089268D /* ADGConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGConstants.h; path = ADGSample/sdk/ADGConstants.h; sourceTree = "<group>"; };
-		F3CECD0F189A15B00089268D /* ADGManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGManagerViewController.h; path = ADGSample/sdk/ADGManagerViewController.h; sourceTree = "<group>"; };
-		F3CECD10189A15B00089268D /* ADGMraidController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGMraidController.h; path = ADGSample/sdk/ADGMraidController.h; sourceTree = "<group>"; };
-		F3CECD11189A15B00089268D /* ADGUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGUtil.h; path = ADGSample/sdk/ADGUtil.h; sourceTree = "<group>"; };
-		F3CECD12189A15B00089268D /* ADGVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGVideoViewController.h; path = ADGSample/sdk/ADGVideoViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,8 +98,8 @@
 				F3BC717B18979B3900180015 /* SystemConfiguration.framework in Frameworks */,
 				F3BC71321897996900180015 /* CoreGraphics.framework in Frameworks */,
 				F3BC71341897996900180015 /* UIKit.framework in Frameworks */,
-				F3813998192C5BE300E72F54 /* libADG1.3.3.a in Frameworks */,
 				F3BC71301897996900180015 /* Foundation.framework in Frameworks */,
+				11867172196A809C00997968 /* libADG1.3.4.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,15 +200,20 @@
 		F3BC716D18979B0800180015 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
-				F3813997192C5BE300E72F54 /* libADG1.3.3.a */,
-				F3223EC218BF12AF0088F1B8 /* ADGInterstitialManager.h */,
-				F3CECD0C189A15B00089268D /* ADGAdWebView.h */,
-				F3CECD0D189A15B00089268D /* ADGBrowserViewController.h */,
-				F3CECD0E189A15B00089268D /* ADGConstants.h */,
-				F3CECD0F189A15B00089268D /* ADGManagerViewController.h */,
-				F3CECD10189A15B00089268D /* ADGMraidController.h */,
-				F3CECD11189A15B00089268D /* ADGUtil.h */,
-				F3CECD12189A15B00089268D /* ADGVideoViewController.h */,
+				11867164196A809C00997968 /* ADGAdWebView.h */,
+				11867165196A809C00997968 /* ADGBrowserViewController.h */,
+				11867166196A809C00997968 /* ADGConstants.h */,
+				11867167196A809C00997968 /* ADGCookieUtil.h */,
+				11867168196A809C00997968 /* ADGInterstitialManager.h */,
+				11867169196A809C00997968 /* ADGInterstitialWindow.h */,
+				1186716A196A809C00997968 /* ADGLibNetwork.h */,
+				1186716B196A809C00997968 /* ADGLibString.h */,
+				1186716C196A809C00997968 /* ADGManagerViewController.h */,
+				1186716D196A809C00997968 /* ADGMraidController.h */,
+				1186716E196A809C00997968 /* ADGReachability.h */,
+				1186716F196A809C00997968 /* ADGUtil.h */,
+				11867170196A809C00997968 /* ADGVideoViewController.h */,
+				11867171196A809C00997968 /* libADG1.3.4.a */,
 			);
 			name = sdk;
 			sourceTree = "<group>";
@@ -441,7 +451,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/ADGSample/sdk/**",
-					/Users/akiyoshitakao/Documents/work/repo/sdk/Samples/iOS/ADGSample/ADGSample/sdk,
+					"$(PROJECT_DIR)/ADGSample/sdk",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -461,7 +471,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/ADGSample/sdk/**",
-					/Users/akiyoshitakao/Documents/work/repo/sdk/Samples/iOS/ADGSample/ADGSample/sdk,
+					"$(PROJECT_DIR)/ADGSample/sdk",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
