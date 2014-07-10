@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "ADGInterstitialWindow.h"
 
 
-
-@interface ADGInterstitialManager : UIViewController
+@interface ADGInterstitialManager : UIViewController<ADGInterstitialViewDelegate>
 {
     NSDictionary *settings_;
     id delegate_;
@@ -20,15 +20,20 @@
 @property (nonatomic, retain) NSDictionary *settings;
 - (void) setRates:(NSDictionary*)params;
 - (id) adgInit:(BOOL)useLocation;
-- (void) loadRequest;
-- (void) loadRequest:(NSString*)eventName countSpan:(int)span;
-- (void) loadRequest:(NSString*)eventName countSpan:(int)span doSave:(BOOL)save;
+- (void) loadMillennialRequest;
+- (void) loadMillennialRequest:(NSString*)eventName countSpan:(int)span;
+- (void) loadMillennialRequest:(NSString*)eventName countSpan:(int)span doSave:(BOOL)save;
+- (void) loadInterstitialRequest;
+- (void) loadInterstitialRequest:(NSString*)eventName countSpan:(int)span;
+- (void) loadInterstitialRequest:(NSString*)eventName countSpan:(int)span doSave:(BOOL)save;
 - (void) interstitialCallBack:(NSError*)error;
+- (void) showInterstitialView;
 @end
 
 typedef enum {
     kInterstitialADNW_none=0,
-    kInterstitialADNW_millennial
+    kInterstitialADNW_millennial,
+    kInterstitialADNW_ADG
 } ADGInterstitialADNW;
 
 @protocol ADGInterstitialManagerDelegate

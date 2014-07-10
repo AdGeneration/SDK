@@ -26,7 +26,15 @@
     [adg_ loadRequest];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if(adg_){
+        [adg_ resumeRefresh];
+    }
+}
+
 - (void) dealloc {
+    adg_.delegate = nil;
     [adg_ release];
     adg_ = nil;
     [super dealloc];
