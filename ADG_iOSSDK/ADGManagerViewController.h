@@ -5,8 +5,9 @@
 #import <EventKitUI/EKEventEditViewController.h>
 #import "ADGMraidController.h"
 #import "ADGAdWebView.h"
+#import "ADGAdTruthManager.h"
 
-@interface ADGManagerViewController : UIViewController <ADGBrowserViewControllerDelegate, ADGMraidDelegate, ADGAdWebViewDelegate>
+@interface ADGManagerViewController : UIViewController <ADGBrowserViewControllerDelegate, ADGMraidDelegate, ADGAdWebViewDelegate,ADGAdTruthManagerDelegate>
 {
     id delegate_;
 }

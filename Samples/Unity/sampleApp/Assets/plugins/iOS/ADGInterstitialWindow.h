@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ADGAdTruthManager.h"
 
 typedef enum{
     kADGIVM_None=0,
@@ -14,7 +15,7 @@ typedef enum{
     kADGIVM_Offerwall
 }ADGInterstitialViewMode;
 
-@interface ADGInterstitialWindow : UIWindow <UIWebViewDelegate>
+@interface ADGInterstitialWindow : UIWindow <UIWebViewDelegate,ADGAdTruthManagerDelegate>
 {
     id delegater_;
 }

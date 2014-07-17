@@ -30,6 +30,8 @@ typedef enum{
 - (UIWebView*) backAdWebView;
 - (BOOL) isNoAd:(ADGADVIEW_TARGET)target;
 - (void) resetNoAdCount;
+- (void) setWebViewBackgroundColor:(UIColor*)color;
+- (void) setWebViewOpaque:(BOOL)opaque;
 @end
 
 @protocol ADGAdWebViewDelegate
