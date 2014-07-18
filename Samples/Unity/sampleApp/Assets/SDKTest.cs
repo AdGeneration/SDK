@@ -1,11 +1,19 @@
 using UnityEngine;
 using System.Collections;
 
-public class SDKTest : MonoBehaviour {
+public class SDKTest : MonoBehaviour, ADGUnitySDK.Callback {
+
+
+	[SerializeField]
+    ADGUnitySDK sdk_320x50;
+	[SerializeField]
+    ADGUnitySDK sdk_300x250;
 
 	// Use this for initialization
 	void Start () {
-		ADGUnitySDK.initADG();
+        sdk_320x50.callback = this;
+        sdk_300x250.callback = this;
+		// ADGUnitySDK.initADG();
 	}
 	
 	// Update is called once per frame
@@ -16,59 +24,69 @@ public class SDKTest : MonoBehaviour {
 	{
 		if (GUI.Button(new Rect(10, 170, 100, 50), "show"))
 		{
-			ADGUnitySDK.showADG();
+            sdk_320x50.showADG();
+            sdk_300x250.hideADG();
+            Debug.Log("ad show");
+			// ADGUnitySDK.showADG();
 		}
 		
 		if (GUI.Button(new Rect(120, 170, 100, 50), "hide"))
 		{
-			ADGUnitySDK.hideADG();
+            sdk_320x50.hideADG();
+            sdk_300x250.showADG();
+			// ADGUnitySDK.hideADG();
 		}
 		
 		if (GUI.Button(new Rect(10, 270, 100, 50), " Location1"))
 		{
-			
+		    sdk_320x50.changeLocationADG(ADGUnitySDK.Horizontal.LEFT, ADGUnitySDK.Vertical.BOTTOM);	
+            /*
 			if(Application.platform == RuntimePlatform.IPhonePlayer){
 				ADGUnitySDK.changeLocationADG( 0 , 350);
 			} 
 			else if(Application.platform == RuntimePlatform.Android){
 				ADGUnitySDK.changeLocationADG("LEFT" , "BOTTOM");
 			}
+            */
 		}
 		
 		if (GUI.Button(new Rect(120, 270, 100, 50), "Location2"))
 		{
 			
+		    sdk_320x50.changeLocationADG(ADGUnitySDK.Horizontal.RIGHT, ADGUnitySDK.Vertical.TOP);
+            /*
 			if(Application.platform == RuntimePlatform.IPhonePlayer){
 				ADGUnitySDK.changeLocationADG( 0 , 0);
 			}
 			else if(Application.platform == RuntimePlatform.Android){
 				ADGUnitySDK.changeLocationADG("LEFT" , " TOP");
 			}
+            */
 		}
 	}
 	
-	//recieve mesasge
-	void ADGReceiveAd(string str){
+	// adgni callback message
+	public void ADGReceiveAd(string str){
 		Debug.Log(str);
 	}
 	
-	void ADGFailedToReceiveAd(string str){
+	public void ADGFailedToReceiveAd(string str){
 		Debug.Log(str);
 	}
 	
-	void ADGBrowserShow(string str){
+	public void ADGBrowserShow(string str){
 		Debug.Log(str);
 	}
 	
-	void ADGBrowserClose(string str){
+	public void ADGBrowserClose(string str){
 		Debug.Log(str);
 	}
 	
-	void ADGVideoShow(string str){
+	public void ADGVideoShow(string str){
 		Debug.Log(str);
 	}
 	
-	void ADGVideoDisappear(string str){
+	public void ADGVideoDisappear(string str){
 		Debug.Log(str);
 	}
 }
