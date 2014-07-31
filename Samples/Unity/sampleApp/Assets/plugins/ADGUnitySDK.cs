@@ -1,45 +1,88 @@
+/* AdGeneration UnityPlugin Ver.1.2.0 */
+
 using UnityEngine;
 using System;
 using System.Collections;
 using System.Runtime.InteropServices;
 
-public class ADGUnitySDK : MonoBehaviour {
+public class ADGUnitySDK : ADGMonoBehaviour {
 
-	const string IOS_LOCATIONID = "10723";
-	const string ANDROID_LOCATIONID = "10724";
-	const string ADTYPE = "SP";
-	const float X = 0;
-	const float Y = 0;
-	const string HORIZONTAL = "LEFT";
-	const string VERTICAL = "TOP";
-	const string MESSAGEOBJNAME = "MainCamera";
-
-	const int WIDTH = 0;
-	const int HEIGHT = 0;
+	//パラメータ
+	public static string iosLocationID = "";
+	public static string androidLocationID = "";
+	public static string adType = "SP";
+	public static float x = 0;
+	public static float y = 0;
+	public static string horizontal = "CENTER";
+	public static string vertical = "TOP";
+	public static string messageObjName = "";
+	public static int width = 0;
+	public static int height = 0;
+	public static int[] margin = {0};
+	//パラメータ
 
 	#if UNITY_IPHONE
 	private static IntPtr adgni;
-	[DllImport ("__Internal")]
-	private static extern IntPtr _initADG (string adid , string adtype , float x , float y , string objName , int width , int height);
-	[DllImport ("__Internal")]
-	private static extern void _renewADG (IntPtr adgni , string adid , string adtype , float x , float y , string objName);
-	[DllImport ("__Internal")]
-	private static extern void _finishADG (IntPtr adgni);
-	[DllImport ("__Internal")]
-	private static extern void _resumeADG (IntPtr adgni);
-	[DllImport ("__Internal")]
-	private static extern void _pauseADG (IntPtr adgni);
-	[DllImport ("__Internal")]
-	private static extern void _showADG (IntPtr adgni);
-	[DllImport ("__Internal")]
-	private static extern void _hideADG (IntPtr adgni);
-	[DllImport ("__Internal")]
-	private static extern void _changeLocationADG (IntPtr adgni , float x , float y);
 	#elif UNITY_ANDROID
 	private static AndroidJavaObject androidPlugin;
 	#endif
 	
 	private static ADGUnitySDK myInstance;
+
+	public static string IOSLocationID{
+    	set{iosLocationID = value;}
+    	get{return iosLocationID;}
+	}
+
+	public static string AndroidLocationID{
+    	set{androidLocationID = value;}
+    	get{return androidLocationID;}
+	}
+
+	public static string AdType{
+    	set{adType = value;}
+    	get{return adType;}
+	}
+
+	public static float X{
+    	set{x = value;}
+    	get{return x;}
+	}
+
+	public static float Y{
+    	set{y = value;}
+    	get{return y;}
+	}
+
+	public static string Horizontal{
+    	set{horizontal = value;}
+    	get{return horizontal;}
+	}
+
+	public static string Vertical{
+    	set{vertical = value;}
+    	get{return vertical;}
+	}
+
+	public static string MessageObjName{
+    	set{messageObjName = value;}
+    	get{return messageObjName;}
+	}
+
+	public static int Width{
+    	set{width = value;}
+    	get{return width;}
+	}
+
+	public static int Height{
+    	set{height = value;}
+    	get{return height;}
+	}
+
+	public static int[] Margin{
+    	set{margin = value;}
+    	get{return margin;}
+	}
 
 	private static bool isEditor{
 		get{
@@ -55,13 +98,13 @@ public class ADGUnitySDK : MonoBehaviour {
 			myInstance = gameObject.AddComponent<ADGUnitySDK>();
 			#if UNITY_IPHONE
 			if(Application.platform == RuntimePlatform.IPhonePlayer){
-				adgni = _initADG(IOS_LOCATIONID , ADTYPE, X , Y , MESSAGEOBJNAME , WIDTH , HEIGHT);
+				adgni = _initADG(iosLocationID , adType, x , y , messageObjName , width , height);
 			}
 			#elif UNITY_ANDROID
 			if(Application.platform == RuntimePlatform.Android){
 				AndroidJavaClass manager = new AndroidJavaClass("com.socdm.d.adgeneration.plugin.unity.ADGNativeManager");
 				androidPlugin = manager.CallStatic<AndroidJavaObject>("instance");
-				androidPlugin.Call("initADG", ANDROID_LOCATIONID , ADTYPE , HORIZONTAL , VERTICAL ,  MESSAGEOBJNAME , WIDTH , HEIGHT);
+				androidPlugin.Call("initADG", androidLocationID , adType , horizontal , vertical ,  messageObjName , width , height , margin);
 			}
 			#endif
 		}
@@ -144,20 +187,20 @@ public class ADGUnitySDK : MonoBehaviour {
 		#endif
 	}
 	
-	public static void changeLocationADG(float x , float y){
+	public static void changeLocationADG(float tempx , float tempy){
 		if(noInstance)return;
 		#if UNITY_IPHONE
 		if(Application.platform == RuntimePlatform.IPhonePlayer){
-			_changeLocationADG(adgni , x , y);
+			_changeLocationADG(adgni , tempx , tempy);
 		}
 		#endif
 	}
 	
-	public static void changeLocationADG(string horizontal , string vertical){
+	public static void changeLocationADG(string temphorizontal , string tempvertical){
 		if(noInstance)return;
 		#if UNITY_ANDROID
 		if(Application.platform == RuntimePlatform.Android){
-			androidPlugin.Call("changeLocationADG" , horizontal , vertical);
+			androidPlugin.Call("changeLocationADG" , temphorizontal , tempvertical);
 		}
 		#endif
 	}
@@ -166,11 +209,34 @@ public class ADGUnitySDK : MonoBehaviour {
 		if(noInstance)return;
 		#if UNITY_IPHONE
 		if(Application.platform == RuntimePlatform.IPhonePlayer){
-			_changeLocationADG(adgni , X , Y);
+			_changeLocationADG(adgni , x , y);
 		}
 		#elif UNITY_ANDROID
 		if(Application.platform == RuntimePlatform.Android){
-			androidPlugin.Call("changeLocationADG" , HORIZONTAL , VERTICAL);
+			androidPlugin.Call("changeLocationADG" , horizontal , vertical);
+		}
+		#endif
+	}
+
+	public static void changeMarginADG(int[] tempmargin){
+		if(noInstance)return;
+		#if UNITY_IPHONE
+		#elif UNITY_ANDROID
+		if(Application.platform == RuntimePlatform.Android){
+			androidPlugin.Call("changeMarginADG" , tempmargin);
+		}
+		#endif
+	}
+
+	public static void setBackgroundColorADG(int red , int green , int blue , int alpha){
+		if(noInstance)return;
+		#if UNITY_IPHONE
+		if(Application.platform == RuntimePlatform.IPhonePlayer){
+			_setBackgroundColorADG(adgni , red , green , blue , alpha);
+		}
+		#elif UNITY_ANDROID
+		if(Application.platform == RuntimePlatform.Android){
+			androidPlugin.Call("setBackgroundColorADG" , red , green , blue , alpha);
 		}
 		#endif
 	}

@@ -44,6 +44,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\plugins\ADGMonoBehaviour.cs" />
      <Compile Include="Assets\plugins\ADGUnitySDK.cs" />
      <None Include="Assets\plugins\Android\AndroidManifest.xml" />
   </ItemGroup>

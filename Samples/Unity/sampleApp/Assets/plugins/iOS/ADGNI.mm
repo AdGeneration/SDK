@@ -87,6 +87,21 @@ extern UIViewController *UnityGetGLViewController();
     [adg_ setAdOrigin:point];
 }
 
+- (void) setBackgroundColorWithRed:(int)red green:(int)green blue:(int)blue alpha:(int)alpha{
+    if(!adg_)return;
+
+    if(alpha > 0.0){
+        float f_red = (float)red / 255.0;
+        float f_green = (float)green / 255.0;
+        float f_blue = (float)blue / 255.0;
+        float f_alpha = (float)alpha / 255.0;
+        UIColor *color = [[UIColor colorWithRed:f_red green:f_green blue:f_blue alpha:f_alpha] retain];
+        
+        [adg_.view setBackgroundColor:color];
+        [adg_ setBackGround:color :NO];
+    }
+}
+
 - (void)finish{
     if(!adg_)return;
     
@@ -164,6 +179,7 @@ extern "C"{
     void _showADG(void *adgni);
     void _finishADG(void *adgni);
     void _changeLocationADG(void *adgni , float x , float y);
+    void _setBackgroundColorADG(void *adgni , int red , int green , int blue , int alpha);
 }
 
 #pragma mark method for NativeInterface
@@ -186,7 +202,7 @@ void _renewADG(void *adgni , const char* adid , const char* adtype , float x , f
     NSString *objNameStr = [NSString stringWithCString:objName encoding:NSUTF8StringEncoding];
     
     ADGNI *adgni_temp = (ADGNI *)adgni;
-    [adgni_temp setParams:UnityGetGLViewController() adid:adidStr adtype:adtypeStr x:x y:y objName:objNameStr];
+    [adgni_temp setParams:UnityGetGLViewController() adid:adidStr adtype:adtypeStr x:x y:y objName:objNameStr width:0 height:0];
 }
 
 void _pauseADG(void *adgni){
@@ -212,6 +228,11 @@ void _showADG(void *adgni){
 void _changeLocationADG(void *adgni , float x , float y){
     ADGNI *adgni_temp = (ADGNI *)adgni;
     [adgni_temp changeLocation:x y:y];
+}
+
+void _setBackgroundColorADG(void *adgni , int red , int green , int blue , int alpha){
+    ADGNI *adgni_temp = (ADGNI *)adgni;
+    [adgni_temp setBackgroundColorWithRed:red green:green blue:blue alpha:alpha];
 }
 
 void _finishADG(void *adgni){
