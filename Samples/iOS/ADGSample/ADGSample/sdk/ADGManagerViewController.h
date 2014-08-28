@@ -13,11 +13,13 @@
 }
 @property (nonatomic, assign) id delegate;
 - (id) initWithAdParams:(NSDictionary*)params :(UIView*)parentView;
+- (id) initWithAdParams:(NSDictionary*)params adView:(UIView*)parentView;
 - (void) setLocationid:(NSString *)locationid;
 - (void) setAdType:(ADGAdType)type;
 - (void) setAdOrigin:(CGPoint)origin;
 - (void) setFrame:(CGRect)rect;
 - (void) setBackGround:(UIColor*)color :(BOOL)opaque;
+- (void) setBackGround:(UIColor*)color opaque:(BOOL)opaque;
 - (void) loadRequest;
 - (void) resumeRefresh;
 - (void) pauseRefresh;
