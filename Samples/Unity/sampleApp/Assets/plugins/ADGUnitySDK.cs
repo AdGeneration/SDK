@@ -1,4 +1,4 @@
-/* AdGeneration UnityPlugin Ver.1.2.0 */
+/* AdGeneration UnityPlugin Ver.1.2.1 */
 
 using UnityEngine;
 using System;
@@ -108,6 +108,11 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 			}
 			#endif
 		}
+	}
+
+	public static bool canCallADG(){
+		if(noInstance)return false;
+		else return true;
 	}
 	
 	private static bool noInstance{

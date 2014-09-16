@@ -16,4 +16,8 @@ var adgview = adgni.createView({
     adtype:"SP",
 });
 
+win.addEventListener('focus',function(e){
+	adgview.resumeADG();
+});
+
 win.add(adgview);
