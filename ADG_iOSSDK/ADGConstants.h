@@ -1,5 +1,5 @@
 #define kADG_TYPE    @"2"
-#define kADG_VERSION    @"1.4.1"
+#define kADG_VERSION    @"1.4.2"
 
 #define kADGSlideAnimationDuration     0.5
 
@@ -22,3 +22,11 @@ typedef enum {
     kADG_AdType_Tablet,
     kADG_AdType_Free
 } ADGAdType;
+
+typedef enum {
+    kADG_Mw_None=0,
+    kADG_Mw_Other,
+    kADG_Mw_Unity,
+    kADG_Mw_Titanium,
+    kADG_Mw_Cocos2dx
+} ADGMiddleware;

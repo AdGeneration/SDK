@@ -25,6 +25,7 @@
 - (void) pauseRefresh;
 - (void) willRotateToInterfaceOrientation;
 - (void) didRotateFromInterfaceOrientation;
+- (void) setMiddleware:(ADGMiddleware)mw;
         
 @end
 
@@ -33,6 +34,8 @@
 @optional
 - (void)ADGManagerViewControllerReceiveAd:(ADGManagerViewController *)adgManagerViewController;
 - (void)ADGManagerViewControllerFailedToReceiveAd:(ADGManagerViewController *)adgManagerViewController;
+- (void)ADGManagerViewControllerOpenUrl:(ADGManagerViewController *)adgManagerViewController;
+- (void)ADGManagerViewControllerNeedConnection:(ADGManagerViewController *)adgManagerViewController;
 - (void)ADGVideoViewAppear;
 - (void)ADGVideoViewDisappear;
 - (void)ADGBrowserViewControllerShow;
