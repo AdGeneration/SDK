@@ -1,44 +1,39 @@
-//
-//  ADGInterstitialManager.h
-//  ADG
-//
-//  Created by    on 2013/12/12.
-//  Copyright (c) 2013年 mediba.inc. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "ADGInterstitialWindow.h"
 
+typedef enum {
+	kInterstitialADNW_none = 0,
+	kInterstitialADNW_millennial,
+	kInterstitialADNW_ADG
+} ADGInterstitialADNW;
 
-@interface ADGInterstitialManager : UIViewController<ADGInterstitialViewDelegate>
+@interface ADGInterstitialManager : UIViewController <ADGInterstitialViewDelegate>
 {
-    NSDictionary *settings_;
-    id delegate_;
+	NSDictionary *settings_;
+	id delegate_;
 }
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, retain) NSDictionary *settings;
-- (void) setRates:(NSDictionary*)params;
-- (id) adgInit:(BOOL)useLocation;
-- (void) loadMillennialRequest;
-- (void) loadMillennialRequest:(NSString*)eventName countSpan:(int)span;
-- (void) loadMillennialRequest:(NSString*)eventName countSpan:(int)span doSave:(BOOL)save;
-- (void) loadInterstitialRequest;
-- (void) loadInterstitialRequest:(NSString*)eventName countSpan:(int)span;
-- (void) loadInterstitialRequest:(NSString*)eventName countSpan:(int)span doSave:(BOOL)save;
-- (void) interstitialCallBack:(NSError*)error;
-- (void) showInterstitialView;
+- (id)adgInit:(BOOL)useLocation;
+- (void) setLocationid:(NSString *)locationid;
+- (void) setLocationid:(NSString *)locationid withKey:(NSString *)key;
+- (void)loadInterstitialRequest;
+- (void)loadInterstitialRequest:(NSString *)eventName span:(int)span;
+- (void)loadInterstitialRequest:(NSString *)eventName span:(int)span doSave:(BOOL)save;
+- (void)preloadInterstitialRequest;
+- (void)preloadInterstitialRequest:(NSString *)eventName span:(int)span;
+- (void)preloadInterstitialRequest:(NSString *)eventName span:(int)span doSave:(BOOL)save;
+- (void)showInterstitialView;
+- (void)loadMillennialRequest;
+- (void)loadMillennialRequest:(NSString *)eventName span:(int)span;
+- (void)loadMillennialRequest:(NSString *)eventName span:(int)span doSave:(BOOL)save;
+- (void)interstitialCallBack:(NSError *)error;
+- (void)cancelInterstitial;
 @end
-
-typedef enum {
-    kInterstitialADNW_none=0,
-    kInterstitialADNW_millennial,
-    kInterstitialADNW_ADG
-} ADGInterstitialADNW;
 
 @protocol ADGInterstitialManagerDelegate
 @optional
 - (void)ADGInterstitialManagerReceiveAd;
-- (void)ADGInterstitialManagerFailedToReceiveAd:(ADGInterstitialADNW)source error:(NSError*)error;
+- (void)ADGInterstitialManagerFailedToReceiveAd:(ADGInterstitialADNW)source error:(NSError *)error;
 @end
-

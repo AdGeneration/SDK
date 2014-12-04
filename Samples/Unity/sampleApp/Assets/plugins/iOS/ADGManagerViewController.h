@@ -1,13 +1,11 @@
-#import "ADGConstants.h"
-#import "ADGBrowserViewController.h"
-#import "ADGVideoViewController.h"
 #import <EventKit/EKEvent.h>
 #import <EventKitUI/EKEventEditViewController.h>
-#import "ADGMraidController.h"
-#import "ADGAdWebView.h"
 #import "ADGAdTruthManager.h"
+#import "ADGAdWebView.h"
+#import "ADGBrowserViewController.h"
+#import "ADGConstants.h"
 
-@interface ADGManagerViewController : UIViewController <ADGBrowserViewControllerDelegate, ADGMraidDelegate, ADGAdWebViewDelegate,ADGAdTruthManagerDelegate>
+@interface ADGManagerViewController : UIViewController <ADGBrowserViewControllerDelegate, ADGAdWebViewDelegate, ADGAdTruthManagerDelegate>
 {
     id delegate_;
 }
@@ -26,11 +24,9 @@
 - (void) willRotateToInterfaceOrientation;
 - (void) didRotateFromInterfaceOrientation;
 - (void) setMiddleware:(ADGMiddleware)mw;
-        
 @end
 
 @protocol ADGManagerViewControllerDelegate
-
 @optional
 - (void)ADGManagerViewControllerReceiveAd:(ADGManagerViewController *)adgManagerViewController;
 - (void)ADGManagerViewControllerFailedToReceiveAd:(ADGManagerViewController *)adgManagerViewController;
