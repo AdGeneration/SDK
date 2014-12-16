@@ -24,6 +24,7 @@ typedef enum{
 - (void) resetNoAdCount;
 - (void) setWebViewBackgroundColor:(UIColor*)color;
 - (void) setWebViewOpaque:(BOOL)opaque;
+- (void) setAdScale:(float)scale;
 @end
 
 @protocol ADGAdWebViewDelegate

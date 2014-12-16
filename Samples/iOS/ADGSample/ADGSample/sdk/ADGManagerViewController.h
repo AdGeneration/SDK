@@ -24,6 +24,7 @@
 - (void) willRotateToInterfaceOrientation;
 - (void) didRotateFromInterfaceOrientation;
 - (void) setMiddleware:(ADGMiddleware)mw;
+- (void) setAdScale:(float)scale;
 @end
 
 @protocol ADGManagerViewControllerDelegate
