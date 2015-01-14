@@ -20,7 +20,7 @@ typedef enum{
 - (void) stopLoading;
 - (UIWebView*) frontAdWebView;
 - (UIWebView*) backAdWebView;
-- (BOOL) isNoAd:(ADGADVIEW_TARGET)target;
+- (BOOL) isNoAd:(ADGADVIEW_TARGET)target callDelegate:(BOOL)callDelegate;
 - (void) resetNoAdCount;
 - (void) setWebViewBackgroundColor:(UIColor*)color;
 - (void) setWebViewOpaque:(BOOL)opaque;
@@ -34,5 +34,6 @@ typedef enum{
 - (BOOL)adgAdWebView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType source:(ADGADVIEW_TARGET)source;
 - (void)adgAdWebViewDidFinishLoad:(UIWebView *)webView source:(ADGADVIEW_TARGET)source;
 - (void)adgAdWebView:(UIWebView *)webView didFailLoadWithError:(NSError *)error source:(ADGADVIEW_TARGET)source;
+- (void)adgNoAd;
 @end
 
