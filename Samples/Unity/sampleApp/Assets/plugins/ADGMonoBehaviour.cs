@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 public class ADGMonoBehaviour : MonoBehaviour {
 	#if UNITY_IPHONE
 	[DllImport ("__Internal")]
-	protected static extern IntPtr _initADG (string adid , string adtype , float x , float y , string objName , int width , int height);
+	protected static extern IntPtr _initADG (string adid , string adtype , float x , float y , string objName , int width , int height , float scale);
 	[DllImport ("__Internal")]
 	protected static extern void _renewADG (IntPtr adgni , string adid , string adtype , float x , float y , string objName);
 	[DllImport ("__Internal")]

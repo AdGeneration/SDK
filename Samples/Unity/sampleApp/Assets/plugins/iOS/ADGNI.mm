@@ -20,7 +20,7 @@ extern UIViewController *UnityGetGLViewController();
 
 @synthesize adg = adg_;
 
-- (void)setParams:(UIViewController *)viewCon adid:(NSString *)adid adtype:(NSString *)adtype x:(float)x y:(float)y objName:(NSString *)objName width:(int)width height:(int)height{
+- (void)setParams:(UIViewController *)viewCon adid:(NSString *)adid adtype:(NSString *)adtype x:(float)x y:(float)y objName:(NSString *)objName width:(int)width height:(int)height scale:(float)scale{
     //size
     NSInteger adTypeInt = 0;
     if([adtype isEqualToString:@"FREE"] && width > 0 && height > 0){
@@ -63,6 +63,11 @@ extern UIViewController *UnityGetGLViewController();
     adg_ = [[ADGManagerViewController alloc] initWithAdParams:adgparam_ :viewCon.view];	
     [adg_.view setHidden:NO];
     adg_.delegate = self;
+
+    if(fabs(scale - 1.0) > 0.01){
+        [adg_ setAdScale:scale];
+    }
+
     [adg_ loadRequest];
 }
 
@@ -164,6 +169,20 @@ extern UIViewController *UnityGetGLViewController();
     }
 }
 
+- (void)ADGManagerViewControllerOpenUrl:(ADGManagerViewController *)adgManagerViewController
+{
+    if([self canUseGameObj]){
+        UnitySendMessage([gameObjName_ UTF8String] , "ADGOpenUrl" , "ADGOpenUrl from iOS");
+    }
+}
+
+- (void)ADGManagerViewControllerNeedConnection:(ADGManagerViewController *)adgManagerViewController
+{
+    if([self canUseGameObj]){
+        UnitySendMessage([gameObjName_ UTF8String] , "ADGNeedConnection" , "ADGNeedConnection from iOS");
+    }
+}
+
 @end
 
 #pragma mark - C++ code
@@ -171,7 +190,7 @@ extern UIViewController *UnityGetGLViewController();
 #pragma mark definition for NativeInterface
 
 extern "C"{
-    void *_initADG(const char* adid , const char* adtype , float x , float y , const char* objName , int width , int height);
+    void *_initADG(const char* adid , const char* adtype , float x , float y , const char* objName , int width , int height , float scale);
     void _renewADG(void *adgni , const char* adid , const char* adtype , float x , float y , const char* objName);
     void _pauseADG(void *adgni);
     void _resumeADG(void *adgni);
@@ -180,18 +199,19 @@ extern "C"{
     void _finishADG(void *adgni);
     void _changeLocationADG(void *adgni , float x , float y);
     void _setBackgroundColorADG(void *adgni , int red , int green , int blue , int alpha);
+    void _setAdScaleADG(void *adgni , float scale);
 }
 
 #pragma mark method for NativeInterface
 
-void *_initADG(const char* adid , const char* adtype , float x , float y , const char* objName , int width , int height)
+void *_initADG(const char* adid , const char* adtype , float x , float y , const char* objName , int width , int height , float scale)
 {
     NSString *adidStr = [NSString stringWithCString:adid encoding:NSUTF8StringEncoding];
     NSString *adtypeStr = [NSString stringWithCString:adtype encoding:NSUTF8StringEncoding];
     NSString *objNameStr = [NSString stringWithCString:objName encoding:NSUTF8StringEncoding];
     
     id adgni = [[ADGNI alloc] init];
-    [adgni setParams:UnityGetGLViewController() adid:adidStr adtype:adtypeStr x:x y:y objName:objNameStr width:width height:height];
+    [adgni setParams:UnityGetGLViewController() adid:adidStr adtype:adtypeStr x:x y:y objName:objNameStr width:width height:height scale:scale];
     
     return adgni;
 }
@@ -239,4 +259,3 @@ void _finishADG(void *adgni){
     ADGNI *adgni_temp = (ADGNI *)adgni;
     [adgni_temp finish];
 }
-

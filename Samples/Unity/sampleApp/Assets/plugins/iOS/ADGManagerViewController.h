@@ -25,6 +25,7 @@
 - (void) didRotateFromInterfaceOrientation;
 - (void) setMiddleware:(ADGMiddleware)mw;
 - (void) setAdScale:(float)scale;
+- (void) setFillerRetry:(BOOL)retry;
 @end
 
 @protocol ADGManagerViewControllerDelegate
@@ -37,4 +38,5 @@
 - (void)ADGVideoViewDisappear;
 - (void)ADGBrowserViewControllerShow;
 - (void)ADGBrowserViewControllerClose;
+- (void)ADGManagerViewControllerReceiveFiller:(ADGManagerViewController *)adgManagerViewController;
 @end

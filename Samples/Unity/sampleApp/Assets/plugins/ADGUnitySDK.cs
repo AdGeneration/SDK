@@ -1,4 +1,4 @@
-/* AdGeneration UnityPlugin Ver.1.2.2 */
+/* AdGeneration UnityPlugin Ver.1.3.0 */
 
 using UnityEngine;
 using System;
@@ -19,6 +19,7 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 	public static int width = 0;
 	public static int height = 0;
 	public static int[] margin = {0};
+	public static double scale = 1;
 	//パラメータ
 
 	#if UNITY_IPHONE
@@ -84,6 +85,11 @@ public class ADGUnitySDK : ADGMonoBehaviour {
     	get{return margin;}
 	}
 
+	public static double Scale{
+    	set{scale = value;}
+    	get{return scale;}
+	}
+
 	private static bool isEditor{
 		get{
 			return Application.isEditor;
@@ -98,13 +104,13 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 			myInstance = gameObject.AddComponent<ADGUnitySDK>();
 			#if UNITY_IPHONE
 			if(Application.platform == RuntimePlatform.IPhonePlayer){
-				adgni = _initADG(iosLocationID , adType, x , y , messageObjName , width , height);
+				adgni = _initADG(iosLocationID , adType, x , y , messageObjName , width , height , (float)scale);
 			}
 			#elif UNITY_ANDROID
 			if(Application.platform == RuntimePlatform.Android){
 				AndroidJavaClass manager = new AndroidJavaClass("com.socdm.d.adgeneration.plugin.unity.ADGNativeManager");
 				androidPlugin = manager.CallStatic<AndroidJavaObject>("instance");
-				androidPlugin.Call("initADG", androidLocationID , adType , horizontal , vertical ,  messageObjName , width , height , margin);
+				androidPlugin.Call("initADG", androidLocationID , adType , horizontal , vertical ,  messageObjName , width , height , (float)scale , margin);
 			}
 			#endif
 		}
