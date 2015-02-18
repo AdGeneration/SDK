@@ -6,12 +6,12 @@
 
 @implementation ViewController
 
-@synthesize adg = adg_;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    // Banner
     float y = [UIScreen mainScreen].applicationFrame.origin.y;
     NSDictionary *adgparam = @{
                                @"locationid" : @"10723",
@@ -19,26 +19,45 @@
                                @"originx" : @(0),
                                @"originy" : @(y)
                                };
-    ADGManagerViewController *adgvc = [[ADGManagerViewController alloc]initWithAdParams :adgparam :self.view];
-    self.adg = adgvc;
-    [adgvc release];
-    adg_.delegate = self;
-    [adg_ loadRequest];
+    _adg = [[ADGManagerViewController alloc]initWithAdParams :adgparam :self.view];
+    _adg.delegate = self;
+    [_adg loadRequest];
+    
+    // Interstitial
+    _adgInter = [[ADGInterstitial alloc] init];
+    _adgInter.delegate = self;
+    [_adgInter setBackgroundType:2];
+    [_adgInter setCloseButtonType:2];
+    //[_adgInter setPreventAccidentClick:YES];
+    //[_adgInter setSpan:50 isPercentage:YES];
+    [_adgInter setLocationId:@"18031"];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    if(adg_){
-        [adg_ resumeRefresh];
+    if(_adg){
+        [_adg resumeRefresh];
     }
 }
 
 - (void) dealloc {
-    adg_.delegate = nil;
-    [adg_ release];
-    adg_ = nil;
+    _adg.delegate = nil;
+    [_adg release];
+    _adg = nil;
+    
     [super dealloc];
 }
+
+- (void) viewWillDisappear:(BOOL)animated{
+    [_adgInter dismiss];
+    [_adgInter setDelegate:nil];
+    [_adgInter release];
+    _adgInter = nil;
+    
+    [super viewWillDisappear:animated];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -46,6 +65,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+# pragma mark -
+# pragma mark IBAction
+
+- (IBAction)TapLoad:(id)sender {
+    [_adgInter preload];
+}
+
+- (IBAction)TapShow:(id)sender {
+    [_adgInter show];
+}
 
 # pragma mark -
 # pragma mark ADGManagerViewControllerDelegate
@@ -58,6 +87,10 @@
 - (void)ADGManagerViewControllerFailedToReceiveAd:(ADGManagerViewController *)adgManagerViewController
 {
     NSLog(@"%@", @"ADGManagerViewControllerFailedToReceiveAd");
+}
+
+- (void)ADGInterstitialClose{
+    NSLog(@"%@", @"ADGInterstitialClose");
 }
 
 - (void)ADGBrowserViewControllerShow

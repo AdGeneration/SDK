@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1107CD9F1A6611E60098E8AB /* libADG1.5.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1107CD9E1A6611E60098E8AB /* libADG1.5.2.a */; };
+		11B383E81A9185FC002DB0B5 /* ADG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B383E71A9185FC002DB0B5 /* ADG.framework */; };
+		11B383EA1A918603002DB0B5 /* ADG-Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 11B383E91A918603002DB0B5 /* ADG-Resources.bundle */; };
 		F3BC71301897996900180015 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BC712F1897996900180015 /* Foundation.framework */; };
 		F3BC71321897996900180015 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BC71311897996900180015 /* CoreGraphics.framework */; };
 		F3BC71341897996900180015 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BC71331897996900180015 /* UIKit.framework */; };
@@ -42,14 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1107CD971A6611E60098E8AB /* ADGAdTruthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGAdTruthManager.h; path = ADGSample/sdk/ADGAdTruthManager.h; sourceTree = "<group>"; };
-		1107CD981A6611E60098E8AB /* ADGAdWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGAdWebView.h; path = ADGSample/sdk/ADGAdWebView.h; sourceTree = "<group>"; };
-		1107CD991A6611E60098E8AB /* ADGBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGBrowserViewController.h; path = ADGSample/sdk/ADGBrowserViewController.h; sourceTree = "<group>"; };
-		1107CD9A1A6611E60098E8AB /* ADGConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGConstants.h; path = ADGSample/sdk/ADGConstants.h; sourceTree = "<group>"; };
-		1107CD9B1A6611E60098E8AB /* ADGInterstitialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGInterstitialManager.h; path = ADGSample/sdk/ADGInterstitialManager.h; sourceTree = "<group>"; };
-		1107CD9C1A6611E60098E8AB /* ADGInterstitialWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGInterstitialWindow.h; path = ADGSample/sdk/ADGInterstitialWindow.h; sourceTree = "<group>"; };
-		1107CD9D1A6611E60098E8AB /* ADGManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGManagerViewController.h; path = ADGSample/sdk/ADGManagerViewController.h; sourceTree = "<group>"; };
-		1107CD9E1A6611E60098E8AB /* libADG1.5.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libADG1.5.2.a; path = ADGSample/sdk/libADG1.5.2.a; sourceTree = "<group>"; };
+		11B383E71A9185FC002DB0B5 /* ADG.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ADG.framework; path = ADGSample/sdk/ADG.framework; sourceTree = "<group>"; };
+		11B383E91A918603002DB0B5 /* ADG-Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "ADG-Resources.bundle"; path = "ADGSample/sdk/ADG.framework/Versions/A/Resources/ADG-Resources.bundle"; sourceTree = "<group>"; };
 		F3BC712C1897996900180015 /* ADGSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADGSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3BC712F1897996900180015 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F3BC71311897996900180015 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -89,8 +84,8 @@
 				F3BC717818979B3900180015 /* MediaPlayer.framework in Frameworks */,
 				F3BC717918979B3900180015 /* QuartzCore.framework in Frameworks */,
 				F3BC717A18979B3900180015 /* Security.framework in Frameworks */,
+				11B383E81A9185FC002DB0B5 /* ADG.framework in Frameworks */,
 				F3BC717B18979B3900180015 /* SystemConfiguration.framework in Frameworks */,
-				1107CD9F1A6611E60098E8AB /* libADG1.5.2.a in Frameworks */,
 				F3BC71321897996900180015 /* CoreGraphics.framework in Frameworks */,
 				F3BC71341897996900180015 /* UIKit.framework in Frameworks */,
 				F3BC71301897996900180015 /* Foundation.framework in Frameworks */,
@@ -194,14 +189,8 @@
 		F3BC716D18979B0800180015 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
-				1107CD971A6611E60098E8AB /* ADGAdTruthManager.h */,
-				1107CD981A6611E60098E8AB /* ADGAdWebView.h */,
-				1107CD991A6611E60098E8AB /* ADGBrowserViewController.h */,
-				1107CD9A1A6611E60098E8AB /* ADGConstants.h */,
-				1107CD9B1A6611E60098E8AB /* ADGInterstitialManager.h */,
-				1107CD9C1A6611E60098E8AB /* ADGInterstitialWindow.h */,
-				1107CD9D1A6611E60098E8AB /* ADGManagerViewController.h */,
-				1107CD9E1A6611E60098E8AB /* libADG1.5.2.a */,
+				11B383E91A918603002DB0B5 /* ADG-Resources.bundle */,
+				11B383E71A9185FC002DB0B5 /* ADG.framework */,
 			);
 			name = sdk;
 			sourceTree = "<group>";
@@ -282,6 +271,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11B383EA1A918603002DB0B5 /* ADG-Resources.bundle in Resources */,
 				F3BC71481897996A00180015 /* Images.xcassets in Resources */,
 				F3BC713A1897996900180015 /* InfoPlist.strings in Resources */,
 				F3BC71431897996900180015 /* Main.storyboard in Resources */,
@@ -433,6 +423,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ADGSample/sdk",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ADGSample/ADGSample-Prefix.pch";
 				INFOPLIST_FILE = "ADGSample/ADGSample-Info.plist";
@@ -453,6 +447,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ADGSample/sdk",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ADGSample/ADGSample-Prefix.pch";
 				INFOPLIST_FILE = "ADGSample/ADGSample-Info.plist";

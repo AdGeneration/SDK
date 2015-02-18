@@ -4,32 +4,73 @@ package com.example.sampleapp;
 import com.socdm.d.adgeneration.ADG;
 import com.socdm.d.adgeneration.ADG.AdFrameSize;
 import com.socdm.d.adgeneration.ADGListener;
+import com.socdm.d.adgeneration.interstitial.ADGInterstitial;
+import com.socdm.d.adgeneration.interstitial.ADGInterstitialListener;
 
-import android.widget.RelativeLayout;
-import android.view.Gravity;
+import android.widget.LinearLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.Button;
 
 public class MainActivity extends Activity {
 	
 	private ADG adg;
-	static private RelativeLayout layout;
+	private ADGInterstitial adgInter;
+	static private LinearLayout layout;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		layout = new RelativeLayout(this);
-		setContentView(layout ,  new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-		layout.setGravity(Gravity.TOP|Gravity.CENTER);
+		layout = new LinearLayout(this);
+		LayoutParams lp = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		setContentView(layout ,  lp);
+		layout.setOrientation(LinearLayout.VERTICAL);
 	
+        // Banner
 		adg = new ADG(this);
-		adg.setLocationId("10724");//L˜g”Ô†
-		adg.setAdFrameSize(AdFrameSize.SP);//L˜gƒTƒCƒY
-		adg.setAdListener(new AdListener());//ƒCƒxƒ“ƒgó‚¯æ‚èİ’è
+		adg.setLocationId("10724");
+		adg.setAdFrameSize(AdFrameSize.SP);
+		adg.setAdListener(new AdListener());
 		layout.addView(adg);
+
+        // Interstitial
+        adgInter = new ADGInterstitial(this);
+        adgInter.setLocationId("18031");
+        adgInter.setAdListener(new AdInterListener());
+        adgInter.setBackgroundType(2);
+        adgInter.setCloseButtonType(2);
+        //adgInter.setSpan(50 , true);
+        //adgInter.setPreventAccidentalClick(true);
+
+        Button loadBtn = new Button(this);
+        loadBtn.setText("Interstitial Load");
+        layout.addView(loadBtn);
+        loadBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adgInter.preload();
+            }
+        });
+
+        Button showBtn = new Button(this);
+        showBtn.setText("Interstitial Show");
+        layout.addView(showBtn);
+        showBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adgInter.show();
+            }
+        });
 	}
+
+    @Override
+    public void onStop(){
+        adgInter.dismiss();// Cnacel
+        super.onStop();
+    }
 	
     @Override
     protected void onResume() {
@@ -41,31 +82,46 @@ public class MainActivity extends Activity {
     	super.onPause();
     }
     
-    //ƒCƒxƒ“ƒgæ“¾—pƒŠƒXƒi[ƒNƒ‰ƒX
+    
     class AdListener extends ADGListener {
     	@Override
     	public void onReceiveAd() {
-    		//Læ“¾
+    		//åºƒå‘Šå—ä¿¡
     	}
     	@Override
     	public void onFailedToReceiveAd() {
-    		//Læ“¾¸”s
+    		//åºƒå‘Šå—ä¿¡å¤±æ•—
     	}
     	@Override
     	public void onInternalBrowserOpen() {
-    		//ƒAƒvƒŠ“àƒuƒ‰ƒEƒUƒI[ƒvƒ“
+    		//å†…éƒ¨ãƒ–ãƒ©ã‚¦ã‚¶ã‚ªãƒ¼ãƒ—ãƒ³
     	}
     	@Override
     	public void onInternalBrowserClose() {
-    		//ƒAƒvƒŠ“àƒuƒ‰ƒEƒUƒNƒ[ƒY
+    		//å†…éƒ¨ãƒ–ãƒ©ã‚¦ã‚¶ã‚¯ãƒ­ãƒ¼ã‚º
     	}
     	@Override
     	public void onVideoPlayerStart() {
-    		//“®‰æƒvƒŒ[ƒ„[ŠJn
+    		//å‹•ç”»ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼é–‹å§‹
     	}
     	@Override
     	public void onVideoPlayerEnd() {
-    		//“®‰æƒvƒŒ[ƒ„[I—¹
+    		//å‹•ç”»ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼çµ‚äº†
     	}
+    }
+
+    class AdInterListener extends ADGInterstitialListener{
+        @Override
+        public void onReceiveAd() {
+          //åºƒå‘Šå—ä¿¡
+        }
+        @Override
+        public void onFailedToReceiveAd() {
+          //åºƒå‘Šå—ä¿¡å¤±æ•—
+        }
+        @Override
+        public void onCloseInterstitial() {
+          //ã‚¤ãƒ³ã‚¿ãƒ¼ã‚¹ãƒ†ã‚£ã‚·ãƒ£ãƒ«ã‚¯ãƒ­ãƒ¼ã‚º
+        }
     }
 }

@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "ADGManagerViewController.h"
+#import <ADG/ADGManagerViewController.h>
 
 extern "C" void UnitySendMessage(const char *, const char *, const char *);
 extern UIViewController *UnityGetGLViewController();

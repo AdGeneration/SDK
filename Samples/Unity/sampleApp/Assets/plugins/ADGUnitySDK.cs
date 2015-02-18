@@ -1,4 +1,4 @@
-/* AdGeneration UnityPlugin Ver.1.3.0 */
+/* AdGeneration UnityPlugin Ver.1.3.1 */
 
 using UnityEngine;
 using System;
