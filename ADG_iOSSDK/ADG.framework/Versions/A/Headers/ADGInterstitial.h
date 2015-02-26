@@ -15,9 +15,10 @@
 - (void)setPortraitCloseButtonType:(int)designType;
 - (void)setLandscapeCloseButtonType:(int)designType;
 
-
+- (void)setOrientationReload:(BOOL)orientationReload;
 - (void)setSpan:(int)span;
 - (void)setSpan:(int)span isPercentage:(BOOL)isPercentage;
+- (void)removeBackgroundTapGesture;
 
 - (void)setLocationId:(NSString*)locationId;
 - (void)setAdType:(ADGAdType)adType;
@@ -27,7 +28,7 @@
 - (void)setPreventAccidentClick:(BOOL)preventAccidentClick;
 
 - (void)preload;
-- (void)show;
+- (BOOL)show;
 - (void)dismiss;
 @end
 
