@@ -1,5 +1,4 @@
-#import <EventKit/EKEvent.h>
-#import <EventKitUI/EKEventEditViewController.h>
+#import <UIKit/UIKit.h>
 #import "ADGAdTruthManager.h"
 #import "ADGAdWebView.h"
 #import "ADGBrowserViewController.h"

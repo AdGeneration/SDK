@@ -25,7 +25,6 @@
 		F3BC715B1897996A00180015 /* ADGSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F3BC715A1897996A00180015 /* ADGSampleTests.m */; };
 		F3BC717518979B3900180015 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BC716E18979B3900180015 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F3BC717618979B3900180015 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BC716F18979B3900180015 /* CoreTelephony.framework */; };
-		F3BC717718979B3900180015 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BC717018979B3900180015 /* EventKit.framework */; };
 		F3BC717818979B3900180015 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BC717118979B3900180015 /* MediaPlayer.framework */; };
 		F3BC717918979B3900180015 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BC717218979B3900180015 /* QuartzCore.framework */; };
 		F3BC717A18979B3900180015 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BC717318979B3900180015 /* Security.framework */; };
@@ -80,7 +79,6 @@
 			files = (
 				F3BC717518979B3900180015 /* AdSupport.framework in Frameworks */,
 				F3BC717618979B3900180015 /* CoreTelephony.framework in Frameworks */,
-				F3BC717718979B3900180015 /* EventKit.framework in Frameworks */,
 				F3BC717818979B3900180015 /* MediaPlayer.framework in Frameworks */,
 				F3BC717918979B3900180015 /* QuartzCore.framework in Frameworks */,
 				F3BC717A18979B3900180015 /* Security.framework in Frameworks */,

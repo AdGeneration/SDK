@@ -30,4 +30,5 @@ typedef enum {
     kADG_Mw_Titanium,
     kADG_Mw_Cocos2dx
 } ADGMiddleware;
+
 #endif
