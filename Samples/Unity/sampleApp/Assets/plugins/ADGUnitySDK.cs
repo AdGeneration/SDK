@@ -5,7 +5,8 @@ using System;
 using System.Collections;
 using System.Runtime.InteropServices;
 
-public class ADGUnitySDK : ADGMonoBehaviour {
+public class ADGUnitySDK : ADGMonoBehaviour
+{
 
 	//パラメータ
 	public static string iosLocationID = "";
@@ -90,9 +91,24 @@ public class ADGUnitySDK : ADGMonoBehaviour {
     	get{return scale;}
 	}
 
-	private static bool isEditor{
+	private static bool isEditor
+	{
 		get{
 			return Application.isEditor;
+		}
+	}
+
+	private static bool isAndroid
+	{
+		get{
+			return (Application.platform == RuntimePlatform.Android);
+		}
+	}
+
+	private static bool isIPhone
+	{
+		get{
+			return (Application.platform == RuntimePlatform.IPhonePlayer);
 		}
 	}
 
@@ -130,7 +146,8 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 	public static void finishADG(){
 		if(noInstance)return;
 		#if UNITY_IPHONE
-		if(Application.platform == RuntimePlatform.IPhonePlayer){
+		if(isIPhone)
+		{
 			_finishADG(adgni);
 		}
 		#elif UNITY_ANDROID
@@ -145,11 +162,13 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 	public static void resumeADG(){
 		if(noInstance)return;
 		#if UNITY_IPHONE
-		if(Application.platform == RuntimePlatform.IPhonePlayer){
+		if (isIPhone)
+		{
 			_resumeADG(adgni);
 		}
 		#elif UNITY_ANDROID
-		if(Application.platform == RuntimePlatform.Android){
+		if (isAndroid)
+		{
 			androidPlugin.Call("resumeADG");
 		}
 		#endif
@@ -158,11 +177,13 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 	public static void pauseADG(){
 		if(noInstance)return;
 		#if UNITY_IPHONE
-		if(Application.platform == RuntimePlatform.IPhonePlayer){
+		if (isIPhone)
+		{
 			_pauseADG(adgni);
 		}
 		#elif UNITY_ANDROID
-		if(Application.platform == RuntimePlatform.Android){
+		if (IsAndroid)
+		{
 			androidPlugin.Call("pauseADG");
 		}
 		#endif
@@ -171,12 +192,14 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 	public static void showADG(){
 		if(noInstance)return;
 		#if UNITY_IPHONE
-		if(Application.platform == RuntimePlatform.IPhonePlayer){
+		if (IsIPhone)
+		{
 			_resumeADG(adgni);
 			_showADG(adgni);
 		}
 		#elif UNITY_ANDROID
-		if(Application.platform == RuntimePlatform.Android){
+		if (IsAndroid)
+		{
 			androidPlugin.Call("resumeADG");
 			androidPlugin.Call("showADG");
 		}
@@ -186,12 +209,14 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 	public static void hideADG(){
 		if(noInstance)return;
 		#if UNITY_IPHONE
-		if(Application.platform == RuntimePlatform.IPhonePlayer){
+		if (IsIPhone)
+		{
 			_hideADG(adgni);
 			_pauseADG(adgni);
 		}
 		#elif UNITY_ANDROID
-		if(Application.platform == RuntimePlatform.Android){
+		if (IsAndroid)
+		{
 			androidPlugin.Call("hideADG");
 			androidPlugin.Call("pauseADG");
 		}
@@ -201,7 +226,8 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 	public static void changeLocationADG(float tempx , float tempy){
 		if(noInstance)return;
 		#if UNITY_IPHONE
-		if(Application.platform == RuntimePlatform.IPhonePlayer){
+		if (IsPhone)
+		{
 			_changeLocationADG(adgni , tempx , tempy);
 		}
 		#endif
@@ -210,7 +236,8 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 	public static void changeLocationADG(string temphorizontal , string tempvertical){
 		if(noInstance)return;
 		#if UNITY_ANDROID
-		if(Application.platform == RuntimePlatform.Android){
+		if (IsAndroid)
+		{
 			androidPlugin.Call("changeLocationADG" , temphorizontal , tempvertical);
 		}
 		#endif
@@ -219,12 +246,14 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 	public static void setDefaultLocationADG(){
 		if(noInstance)return;
 		#if UNITY_IPHONE
-		if(Application.platform == RuntimePlatform.IPhonePlayer){
-			_changeLocationADG(adgni , x , y);
+		if (IsIPhone)
+		{
+			_changeLocationADG(adgni, x, y);
 		}
 		#elif UNITY_ANDROID
-		if(Application.platform == RuntimePlatform.Android){
-			androidPlugin.Call("changeLocationADG" , horizontal , vertical);
+		if (IsAndroid)
+		{
+			androidPlugin.Call("changeLocationADG", horizontal, vertical);
 		}
 		#endif
 	}
@@ -233,21 +262,24 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 		if(noInstance)return;
 		#if UNITY_IPHONE
 		#elif UNITY_ANDROID
-		if(Application.platform == RuntimePlatform.Android){
-			androidPlugin.Call("changeMarginADG" , tempmargin);
+		if (IsAndroid)
+		{
+			androidPlugin.Call("changeMarginADG", tempmargin);
 		}
 		#endif
 	}
 
-	public static void setBackgroundColorADG(int red , int green , int blue , int alpha){
+	public static void setBackgroundColorADG(int red, int green, int blue, int alpha){
 		if(noInstance)return;
 		#if UNITY_IPHONE
-		if(Application.platform == RuntimePlatform.IPhonePlayer){
-			_setBackgroundColorADG(adgni , red , green , blue , alpha);
+		if (IsIPhone)
+		{
+			_setBackgroundColorADG(adgni, red, green, blue, alpha);
 		}
 		#elif UNITY_ANDROID
-		if(Application.platform == RuntimePlatform.Android){
-			androidPlugin.Call("setBackgroundColorADG" , red , green , blue , alpha);
+		if (IsAndroid)
+		{
+			androidPlugin.Call("setBackgroundColorADG", red, green, blue, alpha);
 		}
 		#endif
 	}
