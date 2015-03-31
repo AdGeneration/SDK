@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 public class ADGMonoBehaviour : MonoBehaviour {
 	#if UNITY_IPHONE
 	[DllImport ("__Internal")]
-	protected static extern IntPtr _initADG (string adid , string adtype , float x , float y , string objName , int width , int height , float scale);
+	protected static extern IntPtr _initADG (IntPtr adgni , string adid , string adtype , float x , float y , string objName , int width , int height , float scale , string horizontal , string vertical);
 	[DllImport ("__Internal")]
 	protected static extern void _renewADG (IntPtr adgni , string adid , string adtype , float x , float y , string objName);
 	[DllImport ("__Internal")]
@@ -22,6 +22,18 @@ public class ADGMonoBehaviour : MonoBehaviour {
 	[DllImport ("__Internal")]
 	protected static extern void _changeLocationADG (IntPtr adgni , float x , float y);
 	[DllImport ("__Internal")]
+	protected static extern void _changeLocationEasyADG (IntPtr adgni , string vertical , string horizontal);
+	[DllImport ("__Internal")]
 	protected static extern void _setBackgroundColorADG (IntPtr adgni , int red , int green , int blue , int alpha);
+	[DllImport ("__Internal")]
+	protected static extern IntPtr _initInterADG (IntPtr adgni , string adid , string objName , int backgroundType , int closeButtonType , int span , bool isPercentage , bool isPreventAccidentClick);
+	[DllImport ("__Internal")]
+	protected static extern void _loadInterADG (IntPtr adgni);
+	[DllImport ("__Internal")]
+	protected static extern void _showInterADG (IntPtr adgni);
+	[DllImport ("__Internal")]
+	protected static extern void _dismissInterADG (IntPtr adgni);
+	[DllImport ("__Internal")]
+	protected static extern void _finishInterADG (IntPtr adgni);
 	#endif
 }

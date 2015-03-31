@@ -8,13 +8,19 @@ public class SDKTest : MonoBehaviour {
 		ADGUnitySDK.IOSLocationID = "10723";
 		ADGUnitySDK.AndroidLocationID = "10724";
 		ADGUnitySDK.AdType = "SP";
+		ADGUnitySDK.IsIOSEasyPosition = true;
 		ADGUnitySDK.X = 0;
 		ADGUnitySDK.Y = 0;
 		ADGUnitySDK.Horizontal = "CENTER";
 		ADGUnitySDK.Vertical = "TOP";
 		ADGUnitySDK.Width = 0;
 		ADGUnitySDK.Height = 0;
+		ADGUnitySDK.IOSInterLocationID = "18031";
+		ADGUnitySDK.AndroidInterLocationID = "18031";
+		ADGUnitySDK.BackgroundType = 2;
+		ADGUnitySDK.CloseButtonType = 2;
 		ADGUnitySDK.initADG();
+		ADGUnitySDK.initInterADG();
 	}
 	
 	// Update is called once per frame
@@ -23,36 +29,33 @@ public class SDKTest : MonoBehaviour {
 	
 	void OnGUI()
 	{
-		if (GUI.Button(new Rect(10, 170, 100, 50), "show"))
+		if (GUI.Button(new Rect(10, 170, 150, 50), "show"))
 		{
 			ADGUnitySDK.showADG();
 		}
 		
-		if (GUI.Button(new Rect(120, 170, 100, 50), "hide"))
+		if (GUI.Button(new Rect(170, 170, 150, 50), "hide"))
 		{
 			ADGUnitySDK.hideADG();
 		}
 		
-		if (GUI.Button(new Rect(10, 270, 100, 50), " Location1"))
+		if (GUI.Button(new Rect(10, 270, 150, 50), " Location1"))
 		{
-			
-			if(Application.platform == RuntimePlatform.IPhonePlayer){
-				ADGUnitySDK.changeLocationADG( 0 , 350);
-			} 
-			else if(Application.platform == RuntimePlatform.Android){
-				ADGUnitySDK.changeLocationADG("LEFT" , "BOTTOM");
-			}
+			ADGUnitySDK.changeLocationADG("LEFT" , "BOTTOM");
 		}
 		
-		if (GUI.Button(new Rect(120, 270, 100, 50), "Location2"))
+		if (GUI.Button(new Rect(170, 270, 150, 50), "Location2"))
 		{
-			
-			if(Application.platform == RuntimePlatform.IPhonePlayer){
-				ADGUnitySDK.changeLocationADG( 0 , 0);
-			}
-			else if(Application.platform == RuntimePlatform.Android){
-				ADGUnitySDK.changeLocationADG("LEFT" , " TOP");
-			}
+			ADGUnitySDK.changeLocationADG("LEFT" , " TOP");
+		}
+		if (GUI.Button(new Rect(10, 370, 150, 50), "load(Interstitial)"))
+		{
+			ADGUnitySDK.loadInterADG();
+		}
+		
+		if (GUI.Button(new Rect(170, 370, 150, 50), "show(Interstitial)"))
+		{
+			ADGUnitySDK.showInterADG();
 		}
 	}
 	
