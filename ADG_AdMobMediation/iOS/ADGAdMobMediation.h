@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
-#import "GADCustomEventBanner.h"
-#import "GADCustomEventBannerDelegate.h"
+#import <GoogleMobileAds/Mediation/GADCustomEventBanner.h>
+#import <GoogleMobileAds/Mediation/GADCustomEventBannerDelegate.h>
 #import <ADG/ADGManagerViewController.h>
 
 @interface ADGAdMobMediation : NSObject<GADCustomEventBanner , ADGManagerViewControllerDelegate>
