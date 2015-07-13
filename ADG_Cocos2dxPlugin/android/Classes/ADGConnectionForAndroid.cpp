@@ -13,7 +13,7 @@ void ADGConnectionForAndroid::initADG(char *adid , char *type , char *horizontal
 }
 
 void ADGConnectionForAndroid::initADGWithWH(char *adid , char *type , char *horizontal , char *vertical , int width , int height){
-    initADGWithScale((char *)adid , (char *)type , (char *)horizontal , (char *)vertical , 0 , 0 , 1.0);
+    initADGWithScale((char *)adid , (char *)type , (char *)horizontal , (char *)vertical , width , height , 1.0);
     return;
 }
 
@@ -58,6 +58,7 @@ void ADGConnectionForAndroid::initADGWithScale(char *adid , char *type , char *h
 }
 
 void ADGConnectionForAndroid::showADG(){
+    if(canCallADG() == false)return;
     resumeADG();
     jmethodID methodID = 0;
     JNIEnv *pEnv = 0;
@@ -70,6 +71,7 @@ void ADGConnectionForAndroid::showADG(){
 }
 
 void ADGConnectionForAndroid::hideADG(){
+    if(canCallADG() == false)return;
     jmethodID methodID = 0;
     JNIEnv *pEnv = 0;
     jint ret = cocos2d::JniHelper::getJavaVM()->GetEnv((void**)&pEnv, JNI_VERSION_1_4);
@@ -82,6 +84,7 @@ void ADGConnectionForAndroid::hideADG(){
 }
 
 void ADGConnectionForAndroid::resumeADG(){
+    if(canCallADG() == false)return;
     jmethodID methodID = 0;
     JNIEnv *pEnv = 0;
     jint ret = cocos2d::JniHelper::getJavaVM()->GetEnv((void**)&pEnv, JNI_VERSION_1_4);
@@ -93,6 +96,7 @@ void ADGConnectionForAndroid::resumeADG(){
 }
 
 void ADGConnectionForAndroid::pauseADG(){
+    if(canCallADG() == false)return;
     jmethodID methodID = 0;
     JNIEnv *pEnv = 0;
     jint ret = cocos2d::JniHelper::getJavaVM()->GetEnv((void**)&pEnv, JNI_VERSION_1_4);
@@ -104,6 +108,7 @@ void ADGConnectionForAndroid::pauseADG(){
 }
 
 void ADGConnectionForAndroid::changeLocationADG(char *horizontal , char *vertical){
+    if(canCallADG() == false)return;
     jmethodID methodID = 0;
     JNIEnv *pEnv = 0;
     jint ret = cocos2d::JniHelper::getJavaVM()->GetEnv((void**)&pEnv, JNI_VERSION_1_4);
@@ -117,6 +122,7 @@ void ADGConnectionForAndroid::changeLocationADG(char *horizontal , char *vertica
 }
 
 void ADGConnectionForAndroid::moveDefaultLocationADG(){
+    if(canCallADG() == false)return;
     jmethodID methodID = 0;
     JNIEnv *pEnv = 0;
     jint ret = cocos2d::JniHelper::getJavaVM()->GetEnv((void**)&pEnv, JNI_VERSION_1_4);
@@ -130,6 +136,7 @@ void ADGConnectionForAndroid::moveDefaultLocationADG(){
 }
 
 void ADGConnectionForAndroid::changeMarginADG(int left , int top , int right , int bottom){
+    if(canCallADG() == false)return;
     jmethodID methodID = 0;
     JNIEnv *pEnv = 0;
     jint ret = cocos2d::JniHelper::getJavaVM()->GetEnv((void**)&pEnv, JNI_VERSION_1_4);
@@ -141,6 +148,7 @@ void ADGConnectionForAndroid::changeMarginADG(int left , int top , int right , i
 }
 
 void ADGConnectionForAndroid::finishADG(){
+    if(canCallADG() == false)return;
     jmethodID methodID = 0;
     JNIEnv *pEnv = 0;
     jint ret = cocos2d::JniHelper::getJavaVM()->GetEnv((void**)&pEnv, JNI_VERSION_1_4);
@@ -151,6 +159,7 @@ void ADGConnectionForAndroid::finishADG(){
     }
     mInfo.env->DeleteGlobalRef(adg);
     adg = NULL;
+    mInfo.env = NULL;
 }
 
 void ADGConnectionForAndroid::initInterADG(char *adid , int backgroundType , int closeButtonType , int span , bool isPercentage , bool isPreventAccidentClick){
@@ -185,6 +194,7 @@ void ADGConnectionForAndroid::initInterADG(char *adid , int backgroundType , int
 }
 
 void ADGConnectionForAndroid::loadInterADG(){
+    if(canCallADG() == false)return;
     jmethodID methodID = 0;
     JNIEnv *pEnv = 0;
     jint ret = cocos2d::JniHelper::getJavaVM()->GetEnv((void**)&pEnv, JNI_VERSION_1_4);
@@ -196,6 +206,7 @@ void ADGConnectionForAndroid::loadInterADG(){
 }
 
 void ADGConnectionForAndroid::showInterADG(){
+    if(canCallADG() == false)return;
     jmethodID methodID = 0;
     JNIEnv *pEnv = 0;
     jint ret = cocos2d::JniHelper::getJavaVM()->GetEnv((void**)&pEnv, JNI_VERSION_1_4);
@@ -207,6 +218,7 @@ void ADGConnectionForAndroid::showInterADG(){
 }
 
 void ADGConnectionForAndroid::dismissInterADG(){
+    if(canCallADG() == false)return;
     jmethodID methodID = 0;
     JNIEnv *pEnv = 0;
     jint ret = cocos2d::JniHelper::getJavaVM()->GetEnv((void**)&pEnv, JNI_VERSION_1_4);
@@ -217,3 +229,6 @@ void ADGConnectionForAndroid::dismissInterADG(){
     }
 }
 
+bool ADGConnectionForAndroid::canCallADG(){
+    return mInfo.env != NULL && adg != NULL;
+}

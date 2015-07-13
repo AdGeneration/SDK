@@ -2,16 +2,14 @@
 //  main.m
 //  ADGSample
 //
-//  Created by akiyoshi takao on 2014/01/28.
-//  Copyright (c) 2014年 mediba inc. All rights reserved.
+//  Created by Makoto Natsuaki on 2015/05/11.
+//  Copyright (c) 2015年 ScaleOut. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-
 #import "AppDelegate.h"
 
-int main(int argc, char * argv[])
-{
+int main(int argc, char * argv[]) {
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }

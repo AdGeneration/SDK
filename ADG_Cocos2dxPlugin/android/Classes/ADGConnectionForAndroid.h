@@ -18,4 +18,5 @@ public:
  static void loadInterADG();
  static void showInterADG();
  static void dismissInterADG();
+ static bool canCallADG();
 };
