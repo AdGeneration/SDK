@@ -50,8 +50,18 @@
     NSLog(@"ADGInterstitialReceiveAd");
 }
 
-- (void)ADGManagerViewControllerFailedToReceiveAd:(ADGManagerViewController *)adgManagerViewController {
-    NSLog(@"ADGInterstitialFailedToReceiveAd");
+- (void)ADGManagerViewControllerFailedToReceiveAd:(ADGManagerViewController *)adgManagerViewController
+                                             code:(kADGErrorCode)code {
+    NSString *str = [ADGConstants kADGErrorCodetoString:code];
+    NSLog(@"ADGInterstitialFailedToReceiveAd (code: %@)", str);
+    switch (code) {
+        case kADGErrorCodeExceedLimit:
+        case kADGErrorCodeNeedConnection:
+            break;
+        default:
+            [adgManagerViewController loadRequest];
+            break;
+    }
 }
 
 - (void)ADGInterstitialClose {

@@ -17,6 +17,8 @@
 
 #define kADGLimitCounterNoLimit     0
 
+#define kADGNonExistentCoordinate   999
+
 typedef enum {
     kADG_AdType_Sp = 0,
     kADG_AdType_Large,

@@ -29,6 +29,8 @@
 - (void)setAdScale:(double)scale;
 - (void)setMiddleware:(ADGMiddleware)middleware;
 - (void)setPreventAccidentClick:(BOOL)preventAccidentClick;
+- (void)setLat:(double)lat;
+- (void)setLon:(double)lon;
 
 - (void)preload;
 - (BOOL)show;

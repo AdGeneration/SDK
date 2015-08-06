@@ -8,6 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.socdm.d.adgeneration.ADGConsts.ADGErrorCode;
 import com.socdm.d.adgeneration.interstitial.ADGInterstitial;
 import com.socdm.d.adgeneration.interstitial.ADGInterstitialListener;
 import com.socdm.d.adgeneration.utils.LogUtils;
@@ -32,8 +33,8 @@ public class InterstitialActivity extends ActionBarActivity {
 				LogUtils.i("onReceiveAd");
 			}
 			@Override
-			public void onFailedToReceiveAd() {
-				LogUtils.i("onFailedToReceiveAd");
+			public void onFailedToReceiveAd(ADGErrorCode code) {
+				LogUtils.i("onFailedToReceiveAd (code:" + code.name() + ")");
 			}
 			@Override
 			public void onCloseInterstitial() {

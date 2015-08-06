@@ -11,6 +11,7 @@
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, assign) UIViewController *rootViewController;
 @property (nonatomic, assign) BOOL adgAdView;
+@property (nonatomic, assign) BOOL closeOriginInter;
 @property (nonatomic, assign) BOOL preventAccidentClick;
 - (id) initWithAdParams:(NSDictionary*)params adView:(UIView*)parentView;
 - (void) setDelegate:(id)delegate failedLimit:(int)failedLimit;
@@ -27,11 +28,16 @@
 - (void) setMiddleware:(ADGMiddleware)mw;
 - (void) setFillerRetry:(BOOL)retry;
 - (void) finishMediation;
-- (void) waitMediation;
-- (void) showMediation;
+- (void) waitShowing;
+- (void) show;
+- (void) setLat:(double)lat;
+- (void) setLon:(double)lon;
 
 - (void) setPreLoad:(BOOL)preLoad;
 - (void) stopAutomaticLoad;
+- (void) setDivideShowing:(BOOL)devide;
+
+- (BOOL) isReadyForInterstitial;
 
 // deprecated methods
 - (id) initWithAdParams:(NSDictionary*)params :(UIView*)parentView __attribute__((deprecated));
