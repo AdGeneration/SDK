@@ -27,11 +27,14 @@
 - (void) pauseRefresh;
 - (void) setMiddleware:(ADGMiddleware)mw;
 - (void) setFillerRetry:(BOOL)retry;
+
 - (void) finishMediation;
 - (void) waitShowing;
 - (void) show;
 - (void) setLat:(double)lat;
 - (void) setLon:(double)lon;
+- (void) addMediationNativeAdView:(UIView *)mediationNativeAdView;
+- (void) setEnableSound:(BOOL)enableSound;
 
 - (void) setPreLoad:(BOOL)preLoad;
 - (void) stopAutomaticLoad;
@@ -48,7 +51,10 @@
 @protocol ADGManagerViewControllerDelegate
 @optional
 - (void)ADGManagerViewControllerReceiveAd:(ADGManagerViewController *)adgManagerViewController;
-- (void)ADGManagerViewControllerFailedToReceiveAd:(ADGManagerViewController *)adgManagerViewController code:(kADGErrorCode)code;
+- (void)ADGManagerViewControllerReceiveAd:(ADGManagerViewController *)adgManagerViewController
+                        mediationNativeAd:(id)mediationNativeAd;
+- (void)ADGManagerViewControllerFailedToReceiveAd:(ADGManagerViewController *)adgManagerViewController
+                                             code:(kADGErrorCode)code;
 - (void)ADGManagerViewControllerOpenUrl:(ADGManagerViewController *)adgManagerViewController;
 
 // deprecated delegates

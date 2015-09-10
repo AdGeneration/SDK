@@ -31,6 +31,7 @@
 - (void)setPreventAccidentClick:(BOOL)preventAccidentClick;
 - (void)setLat:(double)lat;
 - (void)setLon:(double)lon;
+- (void)setEnableSound:(BOOL)enableSound;
 
 - (void)preload;
 - (BOOL)show;
