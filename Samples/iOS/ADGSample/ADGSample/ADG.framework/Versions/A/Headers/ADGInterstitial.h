@@ -32,6 +32,7 @@
 - (void)setLat:(double)lat;
 - (void)setLon:(double)lon;
 - (void)setEnableSound:(BOOL)enableSound;
+- (void)setEnableTestMode:(BOOL)isTest;
 
 - (void)preload;
 - (BOOL)show;

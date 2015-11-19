@@ -12,6 +12,7 @@
 @property (nonatomic, assign) BOOL adgAdView;
 @property (nonatomic, assign) BOOL closeOriginInter;
 @property (nonatomic, assign) BOOL preventAccidentClick;
+@property (nonatomic, assign) BOOL usePartsResponse;
 - (id)initWithAdParams:(NSDictionary *)params adView:(UIView *)parentView;
 - (void)setDelegate:(id)delegate failedLimit:(int)failedLimit;
 - (void)setAdType:(ADGAdType)type;
@@ -26,6 +27,7 @@
 - (void)pauseRefresh;
 - (void)setMiddleware:(ADGMiddleware)mw;
 - (void)setFillerRetry:(BOOL)retry;
+- (void)delegateViewManagement:(UIView *)view;
 
 - (void)finishMediation;
 - (void)waitShowing;
@@ -34,6 +36,7 @@
 - (void)setLon:(double)lon;
 - (void)addMediationNativeAdView:(UIView *)mediationNativeAdView;
 - (void)setEnableSound:(BOOL)enableSound;
+- (void)setEnableTestMode:(BOOL)isTest;
 
 - (void)setPreLoad:(BOOL)preLoad;
 - (void)stopAutomaticLoad;
@@ -42,9 +45,12 @@
 - (BOOL)isReadyForInterstitial;
 
 // deprecated methods
-- (id)initWithAdParams:(NSDictionary *)params:(UIView *)parentView __attribute__((deprecated));
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wmissing-selector-name"
+- (id)initWithAdParams:(NSDictionary *)params :(UIView *)parentView __attribute__((deprecated));
 - (NSString *)getLocationid __attribute__((deprecated));
-- (void)setBackGround:(UIColor *)color:(BOOL)opaque __attribute__((deprecated));
+- (void)setBackGround:(UIColor *)color :(BOOL)opaque __attribute__((deprecated));
+#pragma clang diagnostic pop
 @end
 
 @protocol ADGManagerViewControllerDelegate
