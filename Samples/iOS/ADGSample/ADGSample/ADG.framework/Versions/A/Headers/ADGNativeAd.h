@@ -21,8 +21,7 @@
 @property (nonatomic, strong, readonly) ADGImage *iconImage;
 @property (nonatomic, strong, readonly) ADGData *sponsored;
 @property (nonatomic, strong, readonly) ADGData *desc;
-@property (nonatomic, strong, readonly) ADGData *rating;
-@property (nonatomic, strong, readonly) ADGData *cattext;
+@property (nonatomic, strong, readonly) ADGData *ctatext;
 
 @property (nonatomic, strong, readonly) ADGLink *link;
 @property (nonatomic, strong, readonly) NSArray *imptrackers;
