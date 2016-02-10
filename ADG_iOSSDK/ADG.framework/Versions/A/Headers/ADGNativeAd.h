@@ -35,5 +35,6 @@
 
 + (void)setUserAgent:(NSString *)userAgent;
 + (void)callTrackers:(NSArray *)trackers;
++ (void)callTrackers:(NSArray *)trackers isPostRequest:(BOOL)isPostRequest;
 
 @end

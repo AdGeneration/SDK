@@ -1,9 +1,8 @@
 #import <UIKit/UIKit.h>
-#import "ADGAdTruthManager.h"
 #import "ADGAdWebView.h"
 #import "ADGConstants.h"
 
-@interface ADGManagerViewController : UIViewController <ADGAdWebViewDelegate, ADGAdTruthManagerDelegate> {
+@interface ADGManagerViewController : UIViewController <ADGAdWebViewDelegate> {
     id delegate_;
 }
 @property (nonatomic, strong) NSString *locationid;
@@ -28,6 +27,7 @@
 - (void)setMiddleware:(ADGMiddleware)mw;
 - (void)setFillerRetry:(BOOL)retry;
 - (void)delegateViewManagement:(UIView *)view;
+- (void)delegateViewManagement:(UIView *)view nativeAd:(id)nativeAd;
 
 - (void)finishMediation;
 - (void)waitShowing;
@@ -37,6 +37,7 @@
 - (void)addMediationNativeAdView:(UIView *)mediationNativeAdView;
 - (void)setEnableSound:(BOOL)enableSound;
 - (void)setEnableTestMode:(BOOL)isTest;
+- (void)setFillerLimit:(int)limit;
 
 - (void)setPreLoad:(BOOL)preLoad;
 - (void)stopAutomaticLoad;
@@ -61,6 +62,8 @@
 - (void)ADGManagerViewControllerFailedToReceiveAd:(ADGManagerViewController *)adgManagerViewController
                                              code:(kADGErrorCode)code;
 - (void)ADGManagerViewControllerOpenUrl:(ADGManagerViewController *)adgManagerViewController;
+- (void)ADGManagerViewControllerFinishImpression:(ADGManagerViewController *)adgManagerViewController;
+- (void)ADGManagerViewControllerFailInImpression:(ADGManagerViewController *)adgManagerViewController;
 
 // deprecated delegates
 - (void)ADGManagerViewControllerFailedToReceiveAd:(ADGManagerViewController *)adgManagerViewController
