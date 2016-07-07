@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
-#import <GoogleMobileAds/Mediation/GADCustomEventInterstitial.h>
-#import <GoogleMobileAds/Mediation/GADCustomEventInterstitialDelegate.h>
+#import <GoogleMobileAds/GADCustomEventInterstitial.h>
+#import <GoogleMobileAds/GADCustomEventInterstitialDelegate.h>
 #import <ADG/ADGInterstitial.h>
 
 @interface ADGAdMobInterstitialMediation : NSObject<GADCustomEventInterstitial , ADGInterstitialDelegate>
