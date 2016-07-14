@@ -3,7 +3,7 @@
 @interface ADGInterstitial : NSObject <ADGManagerViewControllerDelegate> {
 }
 @property (nonatomic, assign) id delegate;
-@property (nonatomic, assign) UIViewController *rootViewController;
+@property (nonatomic, assign, setter=setRootViewController:) UIViewController *rootViewController;
 - (void)setWindowBackground:(UIColor *)color;
 
 - (void)setTemplateType:(int)type;

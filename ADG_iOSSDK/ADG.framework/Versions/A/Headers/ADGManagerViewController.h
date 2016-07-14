@@ -64,6 +64,7 @@
 - (void)ADGManagerViewControllerOpenUrl:(ADGManagerViewController *)adgManagerViewController;
 - (void)ADGManagerViewControllerFinishImpression:(ADGManagerViewController *)adgManagerViewController;
 - (void)ADGManagerViewControllerFailInImpression:(ADGManagerViewController *)adgManagerViewController;
+- (void)ADGManagerViewControllerCompleteRewardAd;
 
 // deprecated delegates
 - (void)ADGManagerViewControllerFailedToReceiveAd:(ADGManagerViewController *)adgManagerViewController

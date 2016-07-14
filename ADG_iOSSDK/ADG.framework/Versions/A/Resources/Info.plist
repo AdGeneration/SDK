@@ -11,11 +11,11 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.3.2</string>
+	<string>2.4.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright ScaleOut,Inc. All rights reserved.</string>
+	<string>Copyright Supership,Inc. All rights reserved.</string>
 	<key>CFBundleExecutable</key>
 	<string>ADG</string>
 	<key>CFBundleGetInfoString</key>
