@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <script src="lib/onsenui/js/onsenui.min.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <ons-navigator id="myNavigator" page="page1.html"></ons-navigator>
+    <ons-template id="page1.html">
+      <ons-page id="page1">
+        <ons-toolbar>
+          <div class="center">Page 1</div>
+        </ons-toolbar>
+    
+        <p>This is the first page.</p>
+        
+        <div id="adg"></div>  <!--広告を表示したい場所-->
+        
+        <ons-button id="push-button">Push page</ons-button>
+      </ons-page>
+    </ons-template>
+    
+    <ons-template id="page2.html">
+      <ons-page id="page2">
+        <ons-toolbar>
+            <div class="left">
+                <ons-back-button>Back</ons-back-button>
+            </div>
+            <div class="center"></div>
+        </ons-toolbar>
+        <p>This is the second page.</p>
+        <div id="adg2"></div>
+      </ons-page>
+    </ons-template>
+    <script type="text/javascript" src="js/AdGeneration.js"></script>
+    <script>
+        ons.ready(function() {
+            makeADGTag(10722,'adg');
+        });
+        
+        document.addEventListener('init', function(event) {
+            var page = event.target;
+            if (page.id === 'page1') {
+                page.querySelector('#push-button').onclick = function() {
+                    document.querySelector('#myNavigator').pushPage('page2.html', {data: {title: 'Page 2'}});
+                };
+            } else if (page.id === 'page2') {
+                page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
+                makeADGTag(10722,'adg2');
+            }
+        });
+    </script>
+</body>
+</html>
