@@ -64,8 +64,8 @@ class FBNativeAdView: UIView {
         clickableViews.append(adMedia)
         
         // Ad Choices(FANの広告オプトアウトへの導線です)
-        let adChoices = FBAdChoicesView(nativeAd: nativeAd)
-        adChoices.backgroundShown = true
+        let adChoices = FBAdChoicesView(nativeAd: nativeAd, expandable: true)
+        adChoices.backgroundShown = false
         adMedia.addSubview(adChoices)
         adChoices.updateFrameFromSuperview(UIRectCorner.TopRight)
         

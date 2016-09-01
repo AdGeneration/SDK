@@ -39,6 +39,7 @@
     // 動画/静止画兼用のときはFBMediaViewを使用する
     // FBMediaViewはFANのSDKが提供している動画/静止画の出し分けを行うクラスとなります。
     FBMediaView *mainImageView = [[FBMediaView alloc] initWithFrame:CGRectMake(4, 64 , 292 , 156)];
+    [mainImageView setClipsToBounds:YES];
     [mainImageView setNativeAd:nativeAd];
 
     /*
@@ -52,8 +53,8 @@
      */
     
     // AdChoices（FANの広告オプトアウトへの導線です）
-    FBAdChoicesView *adChoices = [[FBAdChoicesView alloc] initWithNativeAd:nativeAd];
-    [adChoices setBackgroundShown:YES];
+    FBAdChoicesView *adChoices = [[FBAdChoicesView alloc] initWithNativeAd:nativeAd expandable:YES];
+    [adChoices setBackgroundShown:NO];
     [mainImageView addSubview:adChoices];
 
     // social
