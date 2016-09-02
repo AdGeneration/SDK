@@ -15,7 +15,8 @@
     "external_plugins": [
         "cordova-plugin-whitelist@1.2.2",
         "cordova-plugin-splashscreen@3.2.2",
-        "cordova-custom-config@2.0.3"
+        "cordova-custom-config@2.0.3",
+        "cordova-plugin-inappbrowser@1.4.0"
     ],
     "title-ja": "AdGenerationSample",
     "title-en": "",
@@ -26,5 +27,5 @@
         "android",
         "ios"
     ],
-    "name": "generated-1472100790-57906e72fd1734da3d9b4fdf"
+    "name": "generated-1472544241-57906e72fd1734da3d9b4fdf"
 }
