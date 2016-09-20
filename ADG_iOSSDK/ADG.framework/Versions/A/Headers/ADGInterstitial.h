@@ -33,6 +33,8 @@
 - (void)setLon:(double)lon;
 - (void)setEnableSound:(BOOL)enableSound;
 - (void)setEnableTestMode:(BOOL)isTest;
+- (void)setSSLMode:(BOOL)isSSL;
++ (void)setDefaultSSLMode:(BOOL)isDefaultSSL;
 
 - (void)preload;
 - (BOOL)show;

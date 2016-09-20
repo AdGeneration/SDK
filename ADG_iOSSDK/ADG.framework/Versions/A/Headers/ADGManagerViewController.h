@@ -34,9 +34,13 @@
 - (void)show;
 - (void)setLat:(double)lat;
 - (void)setLon:(double)lon;
++ (void)setLat:(double)lat;
++ (void)setLon:(double)lon;
 - (void)addMediationNativeAdView:(UIView *)mediationNativeAdView;
 - (void)setEnableSound:(BOOL)enableSound;
 - (void)setEnableTestMode:(BOOL)isTest;
+- (void)setSSLMode:(BOOL)isSSL;
++ (void)setDefaultSSLMode:(BOOL)isDefaultSSL;
 - (void)setFillerLimit:(int)limit;
 
 - (void)setPreLoad:(BOOL)preLoad;
@@ -48,9 +52,9 @@
 // deprecated methods
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-selector-name"
-- (id)initWithAdParams:(NSDictionary *)params :(UIView *)parentView __attribute__((deprecated));
+- (id)initWithAdParams:(NSDictionary *)params:(UIView *)parentView __attribute__((deprecated));
 - (NSString *)getLocationid __attribute__((deprecated));
-- (void)setBackGround:(UIColor *)color :(BOOL)opaque __attribute__((deprecated));
+- (void)setBackGround:(UIColor *)color:(BOOL)opaque __attribute__((deprecated));
 #pragma clang diagnostic pop
 @end
 
