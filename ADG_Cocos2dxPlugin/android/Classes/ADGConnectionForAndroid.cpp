@@ -2,10 +2,10 @@
 #include <jni.h>
 #include "platform/android/jni/JniHelper.h"
 
-cocos2d::JniMethodInfo mInfo;
-jobject adg = NULL;
-char *originHorizontal;
-char *originVertical;
+static cocos2d::JniMethodInfo mInfo;
+static jobject adg = NULL;
+static char *originHorizontal;
+static char *originVertical;
 
 void ADGConnectionForAndroid::initADG(char *adid , char *type , char *horizontal , char *vertical){
 	initADGWithWH((char *)adid , (char *)type , (char *)horizontal , (char *)vertical , 0 , 0);
@@ -55,6 +55,19 @@ void ADGConnectionForAndroid::initADGWithScale(char *adid , char *type , char *h
         mInfo.env->DeleteLocalRef(jVertical);
     }
     return;
+}
+
+void ADGConnectionForAndroid::loadADG(){
+    if(canCallADG() == false)return;
+    resumeADG();
+    jmethodID methodID = 0;
+    JNIEnv *pEnv = 0;
+    jint ret = cocos2d::JniHelper::getJavaVM()->GetEnv((void**)&pEnv, JNI_VERSION_1_4);
+    if(ret == JNI_OK){
+        jclass classID = pEnv->GetObjectClass(adg);
+        methodID = pEnv->GetMethodID(classID, "loadADG", "()V");
+        mInfo.env->CallVoidMethod(adg, methodID);
+    }
 }
 
 void ADGConnectionForAndroid::showADG(){
@@ -226,6 +239,36 @@ void ADGConnectionForAndroid::dismissInterADG(){
         jclass classID = pEnv->GetObjectClass(adg);
         methodID = pEnv->GetMethodID(classID, "dismissInterADG", "()V");
         mInfo.env->CallVoidMethod(adg, methodID);
+    }
+}
+
+float ADGConnectionForAndroid::getNativeWidth(){
+    if(canCallADG() == false)return 0.0;
+    jmethodID methodID = 0;
+    JNIEnv *pEnv = 0;
+    jint ret = cocos2d::JniHelper::getJavaVM()->GetEnv((void**)&pEnv, JNI_VERSION_1_4);
+    if(ret == JNI_OK){
+        jclass classID = pEnv->GetObjectClass(adg);
+        methodID = pEnv->GetMethodID(classID, "getNativeWidthADG", "()F");
+        return mInfo.env->CallFloatMethod(adg, methodID);
+    }
+    else{
+        return 0.0;
+    }
+}
+
+float ADGConnectionForAndroid::getNativeHeight(){
+    if(canCallADG() == false)return 0.0;
+    jmethodID methodID = 0;
+    JNIEnv *pEnv = 0;
+    jint ret = cocos2d::JniHelper::getJavaVM()->GetEnv((void**)&pEnv, JNI_VERSION_1_4);
+    if(ret == JNI_OK){
+        jclass classID = pEnv->GetObjectClass(adg);
+        methodID = pEnv->GetMethodID(classID, "getNativeHeightADG", "()F");
+        return mInfo.env->CallFloatMethod(adg, methodID);
+    }
+    else{
+        return 0.0;
     }
 }
 

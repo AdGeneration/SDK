@@ -6,6 +6,7 @@ public:
  static void initADG(char *adid , char *type , char *horizontal , char *vertical);
  static void initADGWithWH(char *adid , char *type , char *horizontal , char *vertical , int width , int height);
  static void initADGWithScale(char *adid , char *type , char *horizontal , char *vertical , int width , int height , double scale);
+ static void loadADG();
  static void showADG();
  static void hideADG();
  static void pauseADG();
@@ -18,5 +19,7 @@ public:
  static void loadInterADG();
  static void showInterADG();
  static void dismissInterADG();
- static bool canCallADG();
+ static float getNativeWidth();
+ static float getNativeHeight();
+ static bool canCallADG(); 
 };

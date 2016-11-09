@@ -30,7 +30,13 @@ void ADGConnectionForIOS::initADGAction(char *adid , char *type , int x , int y 
     
     [adgc initADG:[NSString stringWithCString:adid encoding:NSUTF8StringEncoding] type:[NSString stringWithCString:type encoding:NSUTF8StringEncoding] x:x y:y width:width height:height scale:(float)scale horizontal:horizontal_ vertical:vertical_ func:func];
     
+    [adgc showADG];
+
     return;
+}
+
+void ADGConnectionForIOS::loadADG(){
+    [adgc loadADG];
 }
 
 void ADGConnectionForIOS::showADG(){
@@ -75,8 +81,6 @@ void ADGConnectionForIOS::finishADG(){
 
     [adgc hideADG];
     [adgc dismissInterADG];
-    [adgc release];
-    adgc = nil;
 }
 
 void ADGConnectionForIOS::initInterADG(char *adid , int backgroundType , int closeButtonType , int span , bool isPercentage , bool isPreventAccidentClick , void (*func)(const char * , const char *)){
@@ -97,4 +101,12 @@ void ADGConnectionForIOS::showInterADG(){
 
 void ADGConnectionForIOS::dismissInterADG(){
     [adgc dismissInterADG];
+}
+
+float ADGConnectionForIOS::getNativeWidth(){
+    return [adgc getNativeWidthADG];
+}
+
+float ADGConnectionForIOS::getNativeHeight(){
+    return [adgc getNativeHeightADG];
 }
