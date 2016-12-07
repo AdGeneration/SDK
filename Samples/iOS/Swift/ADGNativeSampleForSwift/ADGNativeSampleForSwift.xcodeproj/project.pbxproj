@@ -25,9 +25,9 @@
 		B034388B1D0A8727002C36E9 /* ADG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B034388A1D0A8727002C36E9 /* ADG.framework */; };
 		B03438901D0A9A3A002C36E9 /* NativeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B034388F1D0A9A3A002C36E9 /* NativeAdView.swift */; };
 		B03438921D0AA580002C36E9 /* ADGEnumDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03438911D0AA580002C36E9 /* ADGEnumDefine.swift */; };
+		B08179E81D91387000BAFBEA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08179E71D91387000BAFBEA /* StoreKit.framework */; };
 		B0B179EC1D0E7EBA00173B74 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B179EB1D0E7EBA00173B74 /* Log.swift */; };
 		B0B179FA1D0EB0CD00173B74 /* FBNativeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B179F91D0EB0CD00173B74 /* FBNativeAdView.swift */; };
-		B0B179FC1D0EC1CD00173B74 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B179FB1D0EC1CD00173B74 /* StoreKit.framework */; };
 		B0B179FE1D0EC1DB00173B74 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B179FD1D0EC1DB00173B74 /* CoreMotion.framework */; };
 		B0B17A001D0EC1E900173B74 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B179FF1D0EC1E900173B74 /* CoreMedia.framework */; };
 		B0B17A021D0EC1F800173B74 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B17A011D0EC1F800173B74 /* AVFoundation.framework */; };
@@ -76,9 +76,9 @@
 		B034388C1D0A8749002C36E9 /* ADGNativeSampleForSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ADGNativeSampleForSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		B034388F1D0A9A3A002C36E9 /* NativeAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeAdView.swift; sourceTree = "<group>"; };
 		B03438911D0AA580002C36E9 /* ADGEnumDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADGEnumDefine.swift; sourceTree = "<group>"; };
+		B08179E71D91387000BAFBEA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B0B179EB1D0E7EBA00173B74 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		B0B179F91D0EB0CD00173B74 /* FBNativeAdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBNativeAdView.swift; sourceTree = "<group>"; };
-		B0B179FB1D0EC1CD00173B74 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B0B179FD1D0EC1DB00173B74 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		B0B179FF1D0EC1E900173B74 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		B0B17A011D0EC1F800173B74 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -89,10 +89,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B08179E81D91387000BAFBEA /* StoreKit.framework in Frameworks */,
 				B0B17A021D0EC1F800173B74 /* AVFoundation.framework in Frameworks */,
 				B0B17A001D0EC1E900173B74 /* CoreMedia.framework in Frameworks */,
 				B0B179FE1D0EC1DB00173B74 /* CoreMotion.framework in Frameworks */,
-				B0B179FC1D0EC1CD00173B74 /* StoreKit.framework in Frameworks */,
 				B03438861D0A832A002C36E9 /* CoreGraphics.framework in Frameworks */,
 				B03438841D0A8321002C36E9 /* AdSupport.framework in Frameworks */,
 				B03438821D0A8319002C36E9 /* QuartzCore.framework in Frameworks */,
@@ -214,11 +214,11 @@
 		B03438871D0A8374002C36E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B08179E71D91387000BAFBEA /* StoreKit.framework */,
 				B01D63D51D2134BC00036EB9 /* FBAudienceNetwork.framework */,
 				B0B17A011D0EC1F800173B74 /* AVFoundation.framework */,
 				B0B179FF1D0EC1E900173B74 /* CoreMedia.framework */,
 				B0B179FD1D0EC1DB00173B74 /* CoreMotion.framework */,
-				B0B179FB1D0EC1CD00173B74 /* StoreKit.framework */,
 				B034388A1D0A8727002C36E9 /* ADG.framework */,
 				B03438851D0A832A002C36E9 /* CoreGraphics.framework */,
 				B03438831D0A8321002C36E9 /* AdSupport.framework */,
@@ -299,15 +299,24 @@
 				TargetAttributes = {
 					B034383F1D0A797B002C36E9 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					B03438531D0A797C002C36E9 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 5KQ9BP25MK;
+						LastSwiftMigration = 0800;
 						TestTargetID = B034383F1D0A797B002C36E9;
 					};
 					B034385E1D0A797C002C36E9 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 5KQ9BP25MK;
+						LastSwiftMigration = 0800;
 						TestTargetID = B034383F1D0A797B002C36E9;
 					};
 				};
@@ -442,9 +451,11 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -488,9 +499,11 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -514,6 +527,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -524,7 +539,10 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.supership.ADGNativeSampleForSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/ADGNativeSampleForSwift-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -532,7 +550,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -544,6 +564,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.supership.ADGNativeSampleForSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/ADGNativeSampleForSwift-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -555,6 +576,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.supership.ADGNativeSampleForSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADGNativeSampleForSwift.app/ADGNativeSampleForSwift";
 			};
 			name = Debug;
@@ -567,6 +589,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.supership.ADGNativeSampleForSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADGNativeSampleForSwift.app/ADGNativeSampleForSwift";
 			};
 			name = Release;
@@ -578,6 +601,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.supership.ADGNativeSampleForSwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = ADGNativeSampleForSwift;
 			};
 			name = Debug;
@@ -589,6 +613,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.supership.ADGNativeSampleForSwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = ADGNativeSampleForSwift;
 			};
 			name = Release;

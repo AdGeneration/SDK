@@ -13,7 +13,7 @@
     <script type="text/javascript" src="js/AdGeneration.js"></script>
     <script>
         ons.ready(function() {
-            makeADGTag(10722,'adg');
+            makeADGTag('10722','adg_10722', '320', '50');
         });
         
         document.addEventListener('init', function(event) {
@@ -24,12 +24,12 @@
                 };
             } else if (page.id === 'page2') {
                 page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
-                makeADGTag(10722,'adg2');
+                makeADGTag('10722','adg_10722_2', '320', '50');
             }
         });
     </script>
 </head>
-<body>
+ <body>
     <ons-navigator id="myNavigator" page="page1.html"></ons-navigator>
     <ons-template id="page1.html">
       <ons-page id="page1">
@@ -39,7 +39,7 @@
     
         <p>This is the first page.</p>
         
-        <div id="adg"></div>  <!--広告を表示したい場所-->        
+        <div id="adg_10722"></div>  <!--広告を表示したい場所-->        
         <ons-button id="push-button">Push page</ons-button>
       </ons-page>
     </ons-template>
@@ -53,7 +53,7 @@
             <div class="center"></div>
         </ons-toolbar>
         <p>This is the second page.</p>
-        <div id="adg2"></div>
+        <div id="adg_10722_2"></div>
       </ons-page>
     </ons-template>
 </body>

@@ -33,7 +33,7 @@ extern UIViewController *UnityGetGLViewController();
 @synthesize adg = adg_;
 @synthesize adgInter = adgInter_;
 
-- (void)setParams:(UIViewController *)viewCon adid:(NSString *)adid adtype:(NSString *)adtype x:(float)x y:(float)y objName:(NSString *)objName width:(int)width height:(int)height scale:(float)scale horizontal:(NSString *)horizontal vertical:(NSString *)vertical{
+- (void)setParams:(UIViewController *)viewCon adid:(NSString *)adid adtype:(NSString *)adtype x:(float)x y:(float)y objName:(NSString *)objName width:(int)width height:(int)height scale:(float)scale horizontal:(NSString *)horizontal vertical:(NSString *)vertical enableTest:(BOOL)enableTest{
     //size
     NSInteger adTypeInt = 0;
         if([adtype isEqualToString:@"SP"]){
@@ -95,14 +95,21 @@ extern UIViewController *UnityGetGLViewController();
     
     gameObjName_ = [[NSString stringWithString:objName] retain];
     
-    adg_ = [[ADGManagerViewController alloc] initWithAdParams:adgParam_ :viewCon.view]; 
+    adg_ = [[ADGManagerViewController alloc] initWithAdParams:adgParam_ adView:viewCon.view]; 
     [adg_.view setHidden:NO];
     adg_.delegate = self;
+    adg_.rootViewController = viewCon;
 
     if(fabs(scale - 1.0) > 0.01){
         [adg_ setAdScale:scale];
     }
+    
+    [adg_ setEnableTestMode:enableTest];
 
+    [adg_ loadRequest];
+}
+
+- (void)loadRequest{
     [adg_ loadRequest];
 }
 
@@ -145,7 +152,7 @@ extern UIViewController *UnityGetGLViewController();
         UIColor *color = [[UIColor colorWithRed:f_red green:f_green blue:f_blue alpha:f_alpha] retain];
         
         [adg_.view setBackgroundColor:color];
-        [adg_ setBackGround:color :NO];
+        [adg_ setBackGround:color opaque:NO];
     }
 }
 
@@ -161,17 +168,19 @@ extern UIViewController *UnityGetGLViewController();
     [adg_.view setHidden:YES];
 }
 
-- (void)setInterParams:(UIViewController *)viewCon adid:(NSString *)adid objName:(NSString *)objName  backgroundType:(int)backgroundType closeButtonType:(int)closeButtonType span:(int)span isPercentage:(bool)isPercentage isPreventAccidentClick:(bool)isPreventAccidentClick{
+- (void)setInterParams:(UIViewController *)viewCon adid:(NSString *)adid objName:(NSString *)objName  backgroundType:(int)backgroundType closeButtonType:(int)closeButtonType span:(int)span isPercentage:(bool)isPercentage isPreventAccidentClick:(bool)isPreventAccidentClick enableTest:(bool)enableTest{
     gameObjName_ = [[NSString stringWithString:objName] retain];
     adgInterId_ = [adid copy];
 
     adgInter_ = [[ADGInterstitial alloc] init];
     adgInter_.delegate = self;
+    adgInter_.rootViewController = viewCon;
     [adgInter_ setSpan:span isPercentage:isPercentage];
     [adgInter_ setBackgroundType:backgroundType];
     [adgInter_ setCloseButtonType:closeButtonType];
     [adgInter_ setPreventAccidentClick:isPreventAccidentClick];
     [adgInter_ setLocationId:adgInterId_];
+    [adgInter_ setEnableTestMode:enableTest];
 }
 
 - (void)loadInter{
@@ -181,7 +190,8 @@ extern UIViewController *UnityGetGLViewController();
 - (void)showInter{
     BOOL isShow = [adgInter_ show];
     if([self canUseGameObj] && !isShow){
-        UnitySendMessage([gameObjName_ UTF8String] , "ADGinterstitialClose" , "ADGinterstitialClose from iOS");
+        NSString *str = [NSString stringWithFormat:@"ADGInterstitialClose from iOS %@" , adgInterId_];
+        UnitySendMessage([gameObjName_ UTF8String] , "ADGInterstitialClose" , [str UTF8String]);
     }
 }
 
@@ -196,8 +206,17 @@ extern UIViewController *UnityGetGLViewController();
     [self clearGameObjName];
 
     [adgInter_ setDelegate:nil];
+    [adgInter_ setRootViewController:nil];
     [adgInter_ release];
     adgInter_ = nil;
+}
+
+- (float)getNativeWidthADG{
+    return (float)[self getViewWidth];
+}
+
+- (float)getNativeHeightADG{
+    return (float)[self getViewHeight];
 }
 
 - (BOOL)canUseGameObj{
@@ -245,6 +264,8 @@ extern UIViewController *UnityGetGLViewController();
         case UIInterfaceOrientationLandscapeRight:
         width = [self getMaxWithVal1:frame_.size.width val2:frame_.size.height];
         break;
+        case UIInterfaceOrientationUnknown:
+        break;
     }
     return width;
 }
@@ -260,6 +281,8 @@ extern UIViewController *UnityGetGLViewController();
         case UIInterfaceOrientationLandscapeRight:
         height = [self getMinWithVal1:frame_.size.width val2:frame_.size.height];
         break;
+        case UIInterfaceOrientationUnknown:
+        break;
     }
     return height;
 }
@@ -272,68 +295,77 @@ extern UIViewController *UnityGetGLViewController();
     return val1 < val2 ? val1 : val2;
 }
 
++ (void)addFANTestDevice:(NSString *)deviceHash {
+    Class class_FBAdSettings = NSClassFromString(@"FBAdSettings");
+    
+    if (!class_FBAdSettings) return;
+    if (![class_FBAdSettings respondsToSelector:sel_registerName([@"addTestDevice:" UTF8String])]) return;
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-method-access"
+    [class_FBAdSettings addTestDevice:deviceHash];
+#pragma clang diagnostic pop
+}
+
 #pragma mark ADGManagerViewControllerDelegate
 
 - (void)ADGManagerViewControllerReceiveAd:(ADGManagerViewController *)adgManagerViewController
 {
     if([self canUseGameObj]){
-        UnitySendMessage([gameObjName_ UTF8String] , "ADGReceiveAd" , "ADGReceiveAd from iOS");
+        NSString *str = [NSString stringWithFormat:@"ADGReceiveAd from iOS %@" , adgManagerViewController.locationid];
+        UnitySendMessage([gameObjName_ UTF8String] , "ADGReceiveAd" , [str UTF8String]);
     }
 }
 
-- (void)ADGManagerViewControllerFailedToReceiveAd:(ADGManagerViewController *)adgManagerViewController
-{
+- (void)ADGManagerViewControllerFailedToReceiveAd:(ADGManagerViewController *)adgManagerViewController code:(kADGErrorCode)code {
     if([self canUseGameObj]){
-        UnitySendMessage([gameObjName_ UTF8String] , "ADGFailedToReceiveAd" , "ADGFailedToReceiveAd from iOS");
-    }
-}
-
-- (void)ADGBrowserViewControllerShow
-{
-    if([self canUseGameObj]){
-        UnitySendMessage([gameObjName_ UTF8String] , "ADGBrowserShow" , "ADGBrowserShow from iOS");
-    }
-}
-
-- (void)ADGBrowserViewControllerClose
-{
-    if([self canUseGameObj]){
-        UnitySendMessage([gameObjName_ UTF8String] , "ADGBrowserClose" , "ADGBrowserClose from iOS");
-    }
-}
-
-- (void)ADGVideoViewAppear
-{
-    if([self canUseGameObj]){
-        UnitySendMessage([gameObjName_ UTF8String] , "ADGVideoShow" , "ADGVideoShow from iOS");
-    }
-}
-
-- (void)ADGVideoViewDisappear
-{
-    if([self canUseGameObj]){
-        UnitySendMessage([gameObjName_ UTF8String] , "ADGVideoDisappear" , "ADGVideoDisappear from iOS");
+        NSString *str = @"";
+        switch (code) {
+            case kADGErrorCodeExceedLimit:
+                str = [NSString stringWithFormat:@"ADGExceedErrorLimit from iOS %@" , adgManagerViewController.locationid];
+                UnitySendMessage([gameObjName_ UTF8String] , "ADGExceedErrorLimit" , [str UTF8String]);
+                break;
+            case kADGErrorCodeNeedConnection:
+                str = [NSString stringWithFormat:@"ADGNeedConnection from iOS %@" , adgManagerViewController.locationid];
+                UnitySendMessage([gameObjName_ UTF8String] , "ADGNeedConnection" , [str UTF8String]);
+                break;
+            case kADGErrorCodeNoAd:
+            case kADGErrorCodeCommunicationError:
+            case kADGErrorCodeUnknown:
+                str = [NSString stringWithFormat:@"ADGFailedToReceiveAd from iOS %@" , adgManagerViewController.locationid];
+                UnitySendMessage([gameObjName_ UTF8String] , "ADGFailedToReceiveAd" , [str UTF8String]);
+                break;
+            case kADGErrorCodeReceivedFiller:
+                str = [NSString stringWithFormat:@"ADGReceiveFiller from iOS %@" , adgManagerViewController.locationid];
+                UnitySendMessage([gameObjName_ UTF8String] , "ADGReceiveFiller" , [str UTF8String]);
+                break;
+            default:
+                break;
+        }
     }
 }
 
 - (void)ADGManagerViewControllerOpenUrl:(ADGManagerViewController *)adgManagerViewController
 {
     if([self canUseGameObj]){
-        UnitySendMessage([gameObjName_ UTF8String] , "ADGOpenUrl" , "ADGOpenUrl from iOS");
-    }
-}
-
-- (void)ADGManagerViewControllerNeedConnection:(ADGManagerViewController *)adgManagerViewController
-{
-    if([self canUseGameObj]){
-        UnitySendMessage([gameObjName_ UTF8String] , "ADGNeedConnection" , "ADGNeedConnection from iOS");
+        NSString *str = [NSString stringWithFormat:@"ADGOpenUrl from iOS %@" , adgManagerViewController.locationid];
+        UnitySendMessage([gameObjName_ UTF8String] , "ADGOpenUrl" , [str UTF8String]);
     }
 }
 
 - (void)ADGInterstitialClose
 {
     if([self canUseGameObj]){
-        UnitySendMessage([gameObjName_ UTF8String] , "ADGInterstitialClose" , "ADGInterstitialClose from iOS");
+        NSString *str = [NSString stringWithFormat:@"ADGInterstitialClose from iOS %@" , adgInterId_];
+        UnitySendMessage([gameObjName_ UTF8String] , "ADGInterstitialClose" , [str UTF8String]);
+    }
+}
+
+- (void)ADGManagerViewControllerCompleteRewardAd
+{
+    if([self canUseGameObj]){
+        NSString *str = [NSString stringWithFormat:@"ADGCompleteRewardAd from iOS %@" , adgInterId_];
+        UnitySendMessage([gameObjName_ UTF8String] , "ADGCompleteRewardAd" , [str UTF8String]);
     }
 }
 
@@ -344,8 +376,8 @@ extern UIViewController *UnityGetGLViewController();
 #pragma mark definition for NativeInterface
 
 extern "C"{
-    void *_initADG(void *adgni , const char* adid , const char* adtype , float x , float y , const char* objName , int width , int height , float scale , const char* horizontal , const char* vertical);
-    void _renewADG(void *adgni , const char* adid , const char* adtype , float x , float y , const char* objName);
+    void *_initADG(void *adgni , const char* adid , const char* adtype , float x , float y , const char* objName , int width , int height , float scale , const char* horizontal , const char* vertical, bool enableTest);
+    void _loadADG(void *adgni);
     void _pauseADG(void *adgni);
     void _resumeADG(void *adgni);
     void _hideADG(void *adgni);
@@ -355,16 +387,19 @@ extern "C"{
     void _changeLocationEasyADG(void *adgni , const char* horizontal , const char* vertical);
     void _setBackgroundColorADG(void *adgni , int red , int green , int blue , int alpha);
     void _setAdScaleADG(void *adgni , float scale);
-    void *_initInterADG(void *adgni , const char* adid , const char* objName , int backgroundType , int closeButtonType , int span , bool isPercentage , bool isPreventAccidentClick);
+    void *_initInterADG(void *adgni , const char* adid , const char* objName , int backgroundType , int closeButtonType , int span , bool isPercentage , bool isPreventAccidentClick, bool enableTest);
     void _loadInterADG(void *adgni);
     void _showInterADG(void *adgni);
     void _dismissInterADG(void *adgni);
     void _finishInterADG(void *adgni);
+    float _getNativeWidthADG(void *adgni);
+    float _getNativeHeightADG(void *adgni);
+    void _addFANTestDeviceADG(const char* deviceHash);
 }
 
 #pragma mark method for NativeInterface
 
-void *_initADG(void *adgni , const char* adid , const char* adtype , float x , float y , const char* objName , int width , int height , float scale , const char* horizontal , const char* vertical)
+void *_initADG(void *adgni , const char* adid , const char* adtype , float x , float y , const char* objName , int width , int height , float scale , const char* horizontal , const char* vertical, bool enableTest)
 {
     NSString *adidStr = [NSString stringWithCString:adid encoding:NSUTF8StringEncoding];
     NSString *adtypeStr = [NSString stringWithCString:adtype encoding:NSUTF8StringEncoding];
@@ -381,18 +416,14 @@ void *_initADG(void *adgni , const char* adid , const char* adtype , float x , f
         adgni_temp = (ADGNI *)adgni;
     }
 
-    [adgni_temp setParams:UnityGetGLViewController() adid:adidStr adtype:adtypeStr x:x y:y objName:objNameStr width:width height:height scale:scale horizontal:horizontalStr vertical:verticalStr];
+    [adgni_temp setParams:UnityGetGLViewController() adid:adidStr adtype:adtypeStr x:x y:y objName:objNameStr width:width height:height scale:scale horizontal:horizontalStr vertical:verticalStr enableTest:enableTest];
     
     return adgni_temp;
 }
 
-void _renewADG(void *adgni , const char* adid , const char* adtype , float x , float y , const char* objName){
-    NSString *adidStr = [NSString stringWithCString:adid encoding:NSUTF8StringEncoding];
-    NSString *adtypeStr = [NSString stringWithCString:adtype encoding:NSUTF8StringEncoding];
-    NSString *objNameStr = [NSString stringWithCString:objName encoding:NSUTF8StringEncoding];
-    
+void _loadADG(void *adgni){
     ADGNI *adgni_temp = (ADGNI *)adgni;
-    [adgni_temp setParams:UnityGetGLViewController() adid:adidStr adtype:adtypeStr x:x y:y objName:objNameStr width:0 height:0];
+    [adgni_temp loadRequest];
 }
 
 void _pauseADG(void *adgni){
@@ -437,7 +468,7 @@ void _finishADG(void *adgni){
     [adgni_temp finish];
 }
 
-void *_initInterADG(void *adgni , const char* adid , const char* objName , int backgroundType , int closeButtonType , int span , bool isPercentage , bool isPreventAccidentClick)
+void *_initInterADG(void *adgni , const char* adid , const char* objName , int backgroundType , int closeButtonType , int span , bool isPercentage , bool isPreventAccidentClick, bool enableTest)
 {
     NSString *adidStr = [NSString stringWithCString:adid encoding:NSUTF8StringEncoding];
     NSString *objNameStr = [NSString stringWithCString:objName encoding:NSUTF8StringEncoding];
@@ -451,7 +482,7 @@ void *_initInterADG(void *adgni , const char* adid , const char* objName , int b
         adgni_temp = (ADGNI *)adgni;
     }
 
-    [adgni_temp setInterParams:UnityGetGLViewController() adid:adidStr objName:objNameStr backgroundType:backgroundType closeButtonType:closeButtonType span:span isPercentage:isPercentage isPreventAccidentClick:isPreventAccidentClick];
+    [adgni_temp setInterParams:UnityGetGLViewController() adid:adidStr objName:objNameStr backgroundType:backgroundType closeButtonType:closeButtonType span:span isPercentage:isPercentage isPreventAccidentClick:isPreventAccidentClick enableTest:enableTest];
     
     return adgni_temp;
 }
@@ -474,4 +505,19 @@ void _dismissInterADG(void *adgni){
 void _finishInterADG(void *adgni){
     ADGNI *adgni_temp = (ADGNI *)adgni;
     [adgni_temp finishInter];
+}
+
+float _getNativeWidthADG(void *adgni){
+    ADGNI *adgni_temp = (ADGNI *)adgni;
+    return [adgni_temp getNativeWidthADG];
+}
+
+float _getNativeHeightADG(void *adgni){
+    ADGNI *adgni_temp = (ADGNI *)adgni;
+    return [adgni_temp getNativeHeightADG];
+}
+
+void _addFANTestDeviceADG(const char* deviceHash){
+    NSString *deviceHashStr = [NSString stringWithCString:deviceHash encoding:NSUTF8StringEncoding];
+    [ADGNI addFANTestDevice:deviceHashStr];
 }

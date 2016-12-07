@@ -15,6 +15,7 @@ class NativeAdViewController: UIViewController {
     @IBOutlet weak var logTextView: UITextView!
     
     private var adg: ADGManagerViewController?
+    private var rectAd: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,12 +93,18 @@ extension NativeAdViewController: ADGManagerViewControllerDelegate {
     func ADGManagerViewControllerReceiveAd(adgManagerViewController: ADGManagerViewController!, mediationNativeAd: AnyObject!) {
         appendLog("ネイティブ広告をロードしました")
         
-        adView.subviews.forEach({ $0.removeFromSuperview() })
-        
+        adView.subviews.forEach({
+            if $0 === rectAd {
+                $0.removeFromSuperview()
+            }
+        })
+
         if let nativeAd = mediationNativeAd as? ADGNativeAd {
-            adView.addSubview(NativeAdView(adgManagerViewController: adgManagerViewController, nativeAd: nativeAd))
+            rectAd = NativeAdView(adgManagerViewController: adgManagerViewController, nativeAd: nativeAd)
+            adView.addSubview(rectAd!)
         } else if let nativeAd = mediationNativeAd as? FBNativeAd {
-            adView.addSubview(FBNativeAdView(adgManagerViewController: adgManagerViewController, nativeAd: nativeAd))
+            rectAd = FBNativeAdView(adgManagerViewController: adgManagerViewController, nativeAd: nativeAd)
+            adView.addSubview(rectAd!)
         }
     }
     

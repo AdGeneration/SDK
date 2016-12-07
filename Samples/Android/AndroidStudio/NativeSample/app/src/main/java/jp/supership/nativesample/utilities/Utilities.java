@@ -5,7 +5,14 @@ import android.text.TextUtils;
 import android.widget.TextView;
 
 public class Utilities {
-    public static int convertedPixelToDp(Context context, int dp) {
+    /**
+     * DPをピクセルに変換
+     *
+     * @param context Context
+     * @param dp      dp
+     * @return pixel
+     */
+    public static int convertDpToPixel(Context context, int dp) {
         // density (比率)を取得する
         float density = context.getResources().getDisplayMetrics().density;
 
@@ -17,7 +24,7 @@ public class Utilities {
     /**
      * TextViewの末尾に...を設置
      *
-     * @param tv
+     * @param tv TextView
      */
     public static void setOneLineAndEllipsisForTextView(TextView tv) {
         tv.setHorizontallyScrolling(true);

@@ -5,10 +5,10 @@
 //  Copyright © 2016年 supership. All rights reserved.
 //
 
-#import "NativeAdViewController.h"
-#import "LogUtil.h"
 #import "FBNativeAdVIew.h"
+#import "LogUtil.h"
 #import "NativeAdVIew.h"
+#import "NativeAdViewController.h"
 
 @interface NativeAdViewController () {
     NSMutableArray *_outputs;
@@ -22,15 +22,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                              initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-                                              target:self
-                                              action:@selector(reload)];
+    self.navigationItem.rightBarButtonItem =
+        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                      target:self
+                                                      action:@selector(reload)];
     _adView = [[UIView alloc] initWithFrame:CGRectMake(10, 100, 300, 250)];
     [self.view addSubview:_adView];
 }
 
-- (void) reload {
+- (void)reload {
     if (_adg) {
         [_adg loadRequest];
     }
@@ -50,13 +50,13 @@
     [super viewDidAppear:animated];
     if (!_adg) {
         NSDictionary *adgparam = @{
-                                   @"locationid" : @"32792",
-                                   @"adtype" : @(kADG_AdType_Free),
-                                   @"originx" : @(0),
-                                   @"originy" : @(0),
-                                   @"w" : @(300),
-                                   @"h" : @(250)
-                                   };
+            @"locationid" : @"32792",
+            @"adtype" : @(kADG_AdType_Free),
+            @"originx" : @(0),
+            @"originy" : @(0),
+            @"w" : @(300),
+            @"h" : @(250)
+        };
         self.adg = [[ADGManagerViewController alloc] initWithAdParams:adgparam adView:_adView];
         _adg.delegate = self;
         _adg.rootViewController = self;
@@ -68,7 +68,7 @@
     }
 }
 
-- (void) viewDidDisappear:(BOOL)animated{
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     if (_adg) {
         [_adg pauseRefresh];
@@ -92,11 +92,16 @@
     [self appendLog:@"バナー広告をロードしました"];
 }
 
-- (void)ADGManagerViewControllerReceiveAd:(ADGManagerViewController *)adgManagerViewController mediationNativeAd:(id)mediationNativeAd {
+- (void)ADGManagerViewControllerReceiveAd:(ADGManagerViewController *)adgManagerViewController
+                        mediationNativeAd:(id)mediationNativeAd {
     [self appendLog:@"ネイティブ広告をロードしました"];
 
     if ([mediationNativeAd isKindOfClass:[ADGNativeAd class]]) {
-        ADGNativeAd *nativeAd = (ADGNativeAd *) mediationNativeAd;
+        ADGNativeAd *nativeAd = (ADGNativeAd *)mediationNativeAd;
+
+        // インフォメーションアイコンのデフォルト表示OFF
+        adgManagerViewController.informationIconViewDefault = false;
+
         UIView *nativeAdView = [[NativeAdView alloc] createAdView:nativeAd];
         [_adg delegateViewManagement:nativeAdView nativeAd:nativeAd];
         [_adView addSubview:nativeAdView];
@@ -106,9 +111,11 @@
         if (self.nativeAd) {
             [self.nativeAd unregisterView];
         }
-        FBNativeAd *nativeAd = (FBNativeAd *) mediationNativeAd;
+        FBNativeAd *nativeAd = (FBNativeAd *)mediationNativeAd;
         self.nativeAd = nativeAd;
-        UIView *nativeAdView = [[FBNativeAdVIew alloc] createFBNativeAdView:self adgManagerViewController:adgManagerViewController nativeAd:nativeAd];
+        UIView *nativeAdView = [[FBNativeAdVIew alloc] createFBNativeAdView:self
+                                                   adgManagerViewController:adgManagerViewController
+                                                                   nativeAd:nativeAd];
         // ViewのADGManagerViewControllerクラスインスタンスへのセット（ローテーション時等の破棄制御並びに表示のため）
         [adgManagerViewController delegateViewManagement:nativeAdView];
         [_adView addSubview:nativeAdView];
@@ -116,7 +123,8 @@
 }
 
 // エラー時のリトライは特段の理由がない限り必ず記述するようにしてください。
-- (void)ADGManagerViewControllerFailedToReceiveAd:(ADGManagerViewController *)adgManagerViewController code:(kADGErrorCode)code {
+- (void)ADGManagerViewControllerFailedToReceiveAd:(ADGManagerViewController *)adgManagerViewController
+                                             code:(kADGErrorCode)code {
     [self appendLog:@"エラーが発生しました"];
     // 不通とエラー過多のとき以外はリトライ
     switch (code) {

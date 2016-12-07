@@ -1,4 +1,4 @@
-/* AdGeneration UnityPlugin Ver.2.0.0 */
+/* AdGeneration UnityPlugin Ver.2.1.1 */
 
 using UnityEngine;
 using System;
@@ -29,9 +29,11 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 	private static int span = 0;
 	private static bool isPercentage = false;
 	private static bool isPreventAccidentClick = false;
+	private static bool isEnableTest = false;
 	//パラメータ
 
 	private const int androidDesignShift = 100;
+	private const string ADG_NATIVE_MANAGER = "com.socdm.d.adgeneration.plugin.unity.ADGNativeManager";
 
 	#if UNITY_IPHONE
 	private static IntPtr adgni = IntPtr.Zero;
@@ -140,6 +142,11 @@ public class ADGUnitySDK : ADGMonoBehaviour {
     	get{return isPreventAccidentClick;}
     }
 
+    public static bool IsEnableTest{
+      set{isEnableTest = value;}
+      get{return isEnableTest;}
+    }
+
 	private static bool isEditor{
 		get{
 			return Application.isEditor;
@@ -154,12 +161,12 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 				horizontal = "";
 				vertical = "";
 			}
-			adgni = _initADG(adgni , iosLocationID , adType, x , y , messageObjName , width , height , (float)scale , horizontal , vertical);
+			adgni = _initADG(adgni , iosLocationID , adType, x , y , messageObjName , width , height , (float)scale , horizontal , vertical, isEnableTest);
 		}
 		#elif UNITY_ANDROID
 		if(Application.platform == RuntimePlatform.Android){
 			makeJavaInstance();
-			androidPlugin.Call("initADG", androidLocationID , adType , horizontal , vertical ,  messageObjName , width , height , (float)scale , margin);
+			androidPlugin.Call("initADG", androidLocationID , adType , horizontal , vertical ,  messageObjName , width , height , (float)scale , margin, isEnableTest);
 		}
 		#endif
 	}
@@ -176,7 +183,7 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 	#if UNITY_ANDROID
 	private static void makeJavaInstance(){
 		if(androidPlugin == null){
-			AndroidJavaClass manager = new AndroidJavaClass("com.socdm.d.adgeneration.plugin.unity.ADGNativeManager");
+			AndroidJavaClass manager = new AndroidJavaClass(ADG_NATIVE_MANAGER);
 			androidPlugin = manager.CallStatic<AndroidJavaObject>("instance");
 		}
 	}
@@ -184,6 +191,11 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 
 	public static bool canCallADG(){
 		if(noInstance)return false;
+		#if UNITY_ANDROID
+		else if(Application.platform == RuntimePlatform.Android && androidPlugin.Call<bool>("canCallADG") == false){
+			return false;
+		}
+		#endif
 		else return true;
 	}
 	
@@ -206,6 +218,19 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 		#endif
 		Destroy(myInstance);
 		myInstance = null;
+	}
+
+	public static void loadADG(){
+		if(noInstance)return;
+		#if UNITY_IPHONE
+		if(Application.platform == RuntimePlatform.IPhonePlayer){
+			_loadADG(adgni);
+		}
+		#elif UNITY_ANDROID
+		if(Application.platform == RuntimePlatform.Android){
+			androidPlugin.Call("loadADG");
+		}
+		#endif
 	}
 
 	public static void resumeADG(){
@@ -328,12 +353,12 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 		initADGCommon();
 		#if UNITY_IPHONE
 		if(Application.platform == RuntimePlatform.IPhonePlayer){
-			adgni = _initInterADG(adgni , iosInterLocationID , messageObjName , backgroundType , closeButtonType , span , isPercentage , isPreventAccidentClick);
+			adgni = _initInterADG(adgni , iosInterLocationID , messageObjName , backgroundType , closeButtonType , span , isPercentage , isPreventAccidentClick, isEnableTest);
 		}
 		#elif UNITY_ANDROID
 		if(Application.platform == RuntimePlatform.Android){
 			makeJavaInstance();
-			androidPlugin.Call("initInterADG", androidInterLocationID , messageObjName , changeDesignNum(backgroundType) , changeDesignNum(closeButtonType) , span , isPercentage , isPreventAccidentClick);
+			androidPlugin.Call("initInterADG", androidInterLocationID , messageObjName , changeDesignNum(backgroundType) , changeDesignNum(closeButtonType) , span , isPercentage , isPreventAccidentClick, isEnableTest);
 		}
 		#endif
 	}
@@ -386,6 +411,47 @@ public class ADGUnitySDK : ADGMonoBehaviour {
 		#elif UNITY_ANDROID
 		if(Application.platform == RuntimePlatform.Android){
 			androidPlugin.Call("finishInterADG");
+		}
+		#endif
+	}
+
+	public static float getNativeWidth(){
+		if(noInstance)return (float)0.0;
+		#if UNITY_IPHONE
+		if(Application.platform == RuntimePlatform.IPhonePlayer){
+			return _getNativeWidthADG(adgni);
+		}
+		#elif UNITY_ANDROID
+		if(Application.platform == RuntimePlatform.Android){
+			return androidPlugin.Call<float>("getNativeWidthADG");
+		}
+		#endif
+		return (float)0.0;
+	}
+
+	public static float getNativeHeight(){
+		if(noInstance)return (float)0.0;
+		#if UNITY_IPHONE
+		if(Application.platform == RuntimePlatform.IPhonePlayer){
+			return _getNativeHeightADG(adgni);
+		}
+		#elif UNITY_ANDROID
+		if(Application.platform == RuntimePlatform.Android){
+			return androidPlugin.Call<float>("getNativeHeightADG");
+		}
+		#endif
+		return (float)0.0;
+	}
+
+	public static void addFANTestDevice(string deviceHash){
+		#if UNITY_IPHONE
+		if(Application.platform == RuntimePlatform.IPhonePlayer){
+			_addFANTestDeviceADG(deviceHash);
+		}
+		#elif UNITY_ANDROID
+		if(Application.platform == RuntimePlatform.Android){
+			AndroidJavaClass manager = new AndroidJavaClass(ADG_NATIVE_MANAGER);
+			manager.CallStatic("addFANTestDeviceADG", deviceHash);
 		}
 		#endif
 	}
