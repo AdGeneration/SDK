@@ -12,6 +12,7 @@
 @property (nonatomic, assign) BOOL closeOriginInter;
 @property (nonatomic, assign) BOOL preventAccidentClick;
 @property (nonatomic, assign) BOOL usePartsResponse;
+@property (nonatomic, assign) BOOL informationIconViewDefault;
 - (id)initWithAdParams:(NSDictionary *)params adView:(UIView *)parentView;
 - (void)setDelegate:(id)delegate failedLimit:(int)failedLimit;
 - (void)setAdType:(ADGAdType)type;

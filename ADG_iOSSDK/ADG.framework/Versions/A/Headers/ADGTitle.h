@@ -7,9 +7,9 @@
 
 @interface ADGTitle : NSObject
 
-@property (nonatomic, strong, readonly) NSString *text;
-@property (nonatomic, strong, readonly) NSObject *ext;
+@property (nonatomic, strong, readonly, nullable) NSString *text;
+@property (nonatomic, strong, readonly, nullable) NSObject *ext;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dict;
+- (nonnull instancetype)initWithDictionary:(nullable NSDictionary *)dict;
 
 @end

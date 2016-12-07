@@ -35,6 +35,7 @@
 - (void)setEnableTestMode:(BOOL)isTest;
 - (void)setSSLMode:(BOOL)isSSL;
 + (void)setDefaultSSLMode:(BOOL)isDefaultSSL;
+- (void)setFillerLimit:(int)limit;
 
 - (void)preload;
 - (BOOL)show;

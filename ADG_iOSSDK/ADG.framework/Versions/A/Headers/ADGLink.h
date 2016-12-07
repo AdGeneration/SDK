@@ -9,14 +9,14 @@
 
 @interface ADGLink : NSObject
 
-@property (nonatomic, strong, readonly) NSString *url;
-@property (nonatomic, strong, readonly) NSArray *clicktrackers;
-@property (nonatomic, strong, readonly) NSArray *postClicktrackers;
-@property (nonatomic, strong, readonly) NSString *fallback;
-@property (nonatomic, strong, readonly) NSObject *ext;
+@property (nonatomic, strong, readonly, nullable) NSString *url;
+@property (nonatomic, strong, readonly, nullable) NSArray *clicktrackers;
+@property (nonatomic, strong, readonly, nullable) NSArray *postClicktrackers;
+@property (nonatomic, strong, readonly, nullable) NSString *fallback;
+@property (nonatomic, strong, readonly, nullable) NSObject *ext;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dict;
+- (nonnull instancetype)initWithDictionary:(nullable NSDictionary *)dict;
 
-- (void)setTapEvent:(UIView *)view;
+- (void)setTapEvent:(nullable UIView *)view;
 
 @end

@@ -7,11 +7,11 @@
 
 @interface ADGImage : NSObject
 
-@property (nonatomic, strong, readonly) NSString *url;
+@property (nonatomic, strong, readonly, nullable) NSString *url;
 @property (nonatomic, assign, readonly) double width;
 @property (nonatomic, assign, readonly) double height;
-@property (nonatomic, strong, readonly) NSObject *ext;
+@property (nonatomic, strong, readonly, nullable) NSObject *ext;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dict;
+- (nonnull instancetype)initWithDictionary:(nullable NSDictionary *)dict;
 
 @end

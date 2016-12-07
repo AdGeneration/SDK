@@ -16,25 +16,29 @@
 
 @property (nonatomic, assign, readonly) int ver;
 
-@property (nonatomic, strong, readonly) ADGTitle *title;
-@property (nonatomic, strong, readonly) ADGImage *mainImage;
-@property (nonatomic, strong, readonly) ADGImage *iconImage;
-@property (nonatomic, strong, readonly) ADGData *sponsored;
-@property (nonatomic, strong, readonly) ADGData *desc;
-@property (nonatomic, strong, readonly) ADGData *ctatext;
+@property (nonatomic, strong, readonly, nullable) ADGTitle *title;
+@property (nonatomic, strong, readonly, nullable) ADGImage *mainImage;
+@property (nonatomic, strong, readonly, nullable) ADGImage *iconImage;
+@property (nonatomic, strong, readonly, nullable) ADGData *sponsored;
+@property (nonatomic, strong, readonly, nullable) ADGData *desc;
+@property (nonatomic, strong, readonly, nullable) ADGData *ctatext;
 
-@property (nonatomic, strong, readonly) ADGLink *link;
-@property (nonatomic, strong, readonly) NSArray *imptrackers;
-@property (nonatomic, strong, readonly) NSString *jstracker;
-@property (nonatomic, strong, readonly) NSObject *ext;
+@property (nonatomic, strong, readonly, nullable) ADGLink *link;
+@property (nonatomic, strong, readonly, nullable) NSArray *imptrackers;
+@property (nonatomic, strong, readonly, nullable) NSString *jstracker;
+@property (nonatomic, strong, readonly, nullable) NSObject *ext;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dict;
+@property (nonatomic, strong, readonly, nullable) ADGData *informationIconAccompanyingText;
+@property (nonatomic, strong, readonly, nullable) ADGData *informationIconOptoutURL;
+@property (nonatomic, strong, readonly, nullable) ADGData *informationIconIconURL;
+
+- (nonnull instancetype)initWithDictionary:(nonnull NSDictionary *)dict;
 - (void)callImptrackers;
 - (void)callJstracker;
-- (void)setTapEvent:(UIView *)view;
+- (void)setTapEvent:(nonnull UIView *)view;
 
-+ (void)setUserAgent:(NSString *)userAgent;
-+ (void)callTrackers:(NSArray *)trackers;
-+ (void)callTrackers:(NSArray *)trackers isPostRequest:(BOOL)isPostRequest;
++ (void)setUserAgent:(nullable NSString *)userAgent;
++ (void)callTrackers:(nullable NSArray *)trackers;
++ (void)callTrackers:(nullable NSArray *)trackers isPostRequest:(BOOL)isPostRequest;
 
 @end

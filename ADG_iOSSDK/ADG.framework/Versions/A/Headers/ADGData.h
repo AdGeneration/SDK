@@ -7,10 +7,10 @@
 
 @interface ADGData : NSObject
 
-@property (nonatomic, strong, readonly) NSString *value;
-@property (nonatomic, strong, readonly) NSString *label;
-@property (nonatomic, strong, readonly) NSObject *ext;
+@property (nonatomic, strong, readonly, nullable) NSString *value;
+@property (nonatomic, strong, readonly, nullable) NSString *label;
+@property (nonatomic, strong, readonly, nullable) NSObject *ext;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dict;
+- (nonnull instancetype)initWithDictionary:(nullable NSDictionary *)dict;
 
 @end
