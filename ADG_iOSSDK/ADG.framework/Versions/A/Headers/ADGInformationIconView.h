@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, kADGInformationIconViewBackgroundType){
 @interface ADGInformationIconView : UIView
 
 ///The link for opt-out.
-@property (nonatomic, strong, readonly, nullable) NSString *optoutURL;
+@property (nonatomic, copy, readonly, nullable) NSString *optoutURL;
 
 ///Determines whether the black background mask is shown, or a white mask is used.
 @property (nonatomic, assign, getter=getBackgroundType, setter=setBackgroundType:) kADGInformationIconViewBackgroundType backgroundType;
