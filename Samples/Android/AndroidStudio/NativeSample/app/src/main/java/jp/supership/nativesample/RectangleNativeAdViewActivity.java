@@ -116,6 +116,7 @@ public class RectangleNativeAdViewActivity extends Activity {
             switch (code) {
                 case EXCEED_LIMIT:
                 case NEED_CONNECTION:
+                case NO_AD:
                     break;
                 default:
                     if (adg != null) {

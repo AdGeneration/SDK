@@ -5,7 +5,7 @@
 //  Copyright © 2016年 supership. All rights reserved.
 //
 
-#import "FBNativeAdVIew.h"
+#import "ADGFBNativeAdView.h"
 #import "LogUtil.h"
 #import "NativeAdVIew.h"
 #import "NativeAdViewController.h"
@@ -113,7 +113,7 @@
         }
         FBNativeAd *nativeAd = (FBNativeAd *)mediationNativeAd;
         self.nativeAd = nativeAd;
-        UIView *nativeAdView = [[FBNativeAdVIew alloc] createFBNativeAdView:self
+        UIView *nativeAdView = [[ADGFBNativeAdView alloc] createFBNativeAdView:self
                                                    adgManagerViewController:adgManagerViewController
                                                                    nativeAd:nativeAd];
         // ViewのADGManagerViewControllerクラスインスタンスへのセット（ローテーション時等の破棄制御並びに表示のため）
@@ -133,7 +133,6 @@
             break;
         case kADGErrorCodeNoAd:
             [self appendLog:@"レスポンス無し"];
-            [adgManagerViewController loadRequest];
             break;
         case kADGErrorCodeReceivedFiller:
             [self appendLog:@"白板検知"];

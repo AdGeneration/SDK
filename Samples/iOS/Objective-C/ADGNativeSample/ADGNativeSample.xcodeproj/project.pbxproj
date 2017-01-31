@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		0F03C5871D0A7B12009475D7 /* NativeAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F03C5861D0A7B12009475D7 /* NativeAdViewController.m */; };
+		0F4332171E1E20A1002ECD0F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4332161E1E20A1002ECD0F /* AudioToolbox.framework */; };
+		0F4332191E1E20A9002ECD0F /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4332181E1E20A9002ECD0F /* libxml2.tbd */; };
+		0F43321B1E1E20B1002ECD0F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F43321A1E1E20B1002ECD0F /* libc++.tbd */; };
 		0F4459DD1D0932080027A27D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4459DC1D0932080027A27D /* StoreKit.framework */; };
 		0F4459DF1D0932130027A27D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4459DE1D0932130027A27D /* CoreMotion.framework */; };
 		0F4459E11D09321A0027A27D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4459E01D09321A0027A27D /* CoreMedia.framework */; };
 		0F4459E31D0932200027A27D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4459E21D0932200027A27D /* AVFoundation.framework */; };
 		0F9241681D23A60500012AAF /* LogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9241671D23A60500012AAF /* LogUtil.m */; };
-		0F92416D1D23A61600012AAF /* FBNativeAdVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F92416A1D23A61600012AAF /* FBNativeAdVIew.m */; };
+		0F92416D1D23A61600012AAF /* ADGFBNativeAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F92416A1D23A61600012AAF /* ADGFBNativeAdView.m */; };
 		0F92416E1D23A61600012AAF /* NativeAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F92416C1D23A61600012AAF /* NativeAdView.m */; };
 		0F99F4711D06BBD30021195E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F99F4701D06BBD30021195E /* main.m */; };
 		0F99F4741D06BBD30021195E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F99F4731D06BBD30021195E /* AppDelegate.m */; };
@@ -32,14 +35,17 @@
 /* Begin PBXFileReference section */
 		0F03C5851D0A7B02009475D7 /* NativeAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeAdViewController.h; path = Controllers/NativeAdViewController.h; sourceTree = "<group>"; };
 		0F03C5861D0A7B12009475D7 /* NativeAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NativeAdViewController.m; path = Controllers/NativeAdViewController.m; sourceTree = "<group>"; };
+		0F4332161E1E20A1002ECD0F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0F4332181E1E20A9002ECD0F /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		0F43321A1E1E20B1002ECD0F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		0F4459DC1D0932080027A27D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0F4459DE1D0932130027A27D /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		0F4459E01D09321A0027A27D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		0F4459E21D0932200027A27D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0F9241661D23A60500012AAF /* LogUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogUtil.h; path = Utils/LogUtil.h; sourceTree = "<group>"; };
 		0F9241671D23A60500012AAF /* LogUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogUtil.m; path = Utils/LogUtil.m; sourceTree = "<group>"; };
-		0F9241691D23A61600012AAF /* FBNativeAdVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBNativeAdVIew.h; path = Views/FBNativeAdVIew.h; sourceTree = "<group>"; };
-		0F92416A1D23A61600012AAF /* FBNativeAdVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBNativeAdVIew.m; path = Views/FBNativeAdVIew.m; sourceTree = "<group>"; };
+		0F9241691D23A61600012AAF /* ADGFBNativeAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADGFBNativeAdView.h; path = Views/ADGFBNativeAdView.h; sourceTree = "<group>"; };
+		0F92416A1D23A61600012AAF /* ADGFBNativeAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADGFBNativeAdView.m; path = Views/ADGFBNativeAdView.m; sourceTree = "<group>"; };
 		0F92416B1D23A61600012AAF /* NativeAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeAdView.h; path = Views/NativeAdView.h; sourceTree = "<group>"; };
 		0F92416C1D23A61600012AAF /* NativeAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NativeAdView.m; path = Views/NativeAdView.m; sourceTree = "<group>"; };
 		0F99F46C1D06BBD30021195E /* ADGNativeSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADGNativeSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +70,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F43321B1E1E20B1002ECD0F /* libc++.tbd in Frameworks */,
+				0F4332191E1E20A9002ECD0F /* libxml2.tbd in Frameworks */,
+				0F4332171E1E20A1002ECD0F /* AudioToolbox.framework in Frameworks */,
 				0F99F49D1D06DD400021195E /* AdSupport.framework in Frameworks */,
 				0F4459E31D0932200027A27D /* AVFoundation.framework in Frameworks */,
 				0F99F49F1D06DD480021195E /* CoreGraphics.framework in Frameworks */,
@@ -84,8 +93,8 @@
 		0F03C5811D0A7682009475D7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0F9241691D23A61600012AAF /* FBNativeAdVIew.h */,
-				0F92416A1D23A61600012AAF /* FBNativeAdVIew.m */,
+				0F9241691D23A61600012AAF /* ADGFBNativeAdView.h */,
+				0F92416A1D23A61600012AAF /* ADGFBNativeAdView.m */,
 				0F92416B1D23A61600012AAF /* NativeAdView.h */,
 				0F92416C1D23A61600012AAF /* NativeAdView.m */,
 			);
@@ -121,6 +130,9 @@
 		0F03C58F1D0A877F009475D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F43321A1E1E20B1002ECD0F /* libc++.tbd */,
+				0F4332181E1E20A9002ECD0F /* libxml2.tbd */,
+				0F4332161E1E20A1002ECD0F /* AudioToolbox.framework */,
 				0F4459E21D0932200027A27D /* AVFoundation.framework */,
 				0F4459E01D09321A0027A27D /* CoreMedia.framework */,
 				0F4459DE1D0932130027A27D /* CoreMotion.framework */,
@@ -252,7 +264,7 @@
 				0F99F4741D06BBD30021195E /* AppDelegate.m in Sources */,
 				0F9241681D23A60500012AAF /* LogUtil.m in Sources */,
 				0F03C5871D0A7B12009475D7 /* NativeAdViewController.m in Sources */,
-				0F92416D1D23A61600012AAF /* FBNativeAdVIew.m in Sources */,
+				0F92416D1D23A61600012AAF /* ADGFBNativeAdView.m in Sources */,
 				0F99F4711D06BBD30021195E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

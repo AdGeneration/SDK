@@ -1,13 +1,13 @@
 //
-//  FBNativeAdVIew.m
+//  ADGFBNativeAdView.m
 //  ADGNativeSample
 //
 //  Copyright © 2016年 supership. All rights reserved.
 //
 
-#import "FBNativeAdVIew.h"
+#import "ADGFBNativeAdView.h"
 
-@implementation FBNativeAdVIew
+@implementation ADGFBNativeAdView
 
 - (UIView*) createFBNativeAdView:(UIViewController *)viewController adgManagerViewController:(ADGManagerViewController *)adgManagerViewController nativeAd:(FBNativeAd *)nativeAd {
 

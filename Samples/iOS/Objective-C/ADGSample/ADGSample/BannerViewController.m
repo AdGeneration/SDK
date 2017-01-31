@@ -56,6 +56,7 @@
     switch (code) {
         case kADGErrorCodeExceedLimit:
         case kADGErrorCodeNeedConnection:
+        case kADGErrorCodeNoAd:
             break;
         default:
             [adgManagerViewController loadRequest];

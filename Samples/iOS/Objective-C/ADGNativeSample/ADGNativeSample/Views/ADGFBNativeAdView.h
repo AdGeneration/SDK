@@ -1,5 +1,5 @@
 //
-//  FBNativeAdVIew.h
+//  ADGFBNativeAdView.h
 //  ADGNativeSample
 //
 //  Copyright © 2016年 supership. All rights reserved.
@@ -12,7 +12,7 @@
 #import <FBAudienceNetwork/FBAdChoicesView.h>
 #import <FBAudienceNetwork/FBMediaView.h>
 
-@interface FBNativeAdVIew : UIView
+@interface ADGFBNativeAdView : UIView
 
 - (UIView*) createFBNativeAdView:(UIViewController *)viewController adgManagerViewController:(ADGManagerViewController *)adgManagerViewController nativeAd:(FBNativeAd *)nativeAd;
 

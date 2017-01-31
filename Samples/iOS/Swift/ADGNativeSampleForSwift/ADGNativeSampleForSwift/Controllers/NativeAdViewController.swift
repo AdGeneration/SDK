@@ -15,7 +15,6 @@ class NativeAdViewController: UIViewController {
     @IBOutlet weak var logTextView: UITextView!
     
     private var adg: ADGManagerViewController?
-    private var rectAd: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,20 +90,14 @@ extension NativeAdViewController: ADGManagerViewControllerDelegate {
      - parameter mediationNativeAd: ネイティブ広告のインスタンス
      */
     func ADGManagerViewControllerReceiveAd(adgManagerViewController: ADGManagerViewController!, mediationNativeAd: AnyObject!) {
-        appendLog("ネイティブ広告をロードしました")
-        
-        adView.subviews.forEach({
-            if $0 === rectAd {
-                $0.removeFromSuperview()
-            }
-        })
+        appendLog("ネイティブ広告をロードしました")    
 
         if let nativeAd = mediationNativeAd as? ADGNativeAd {
-            rectAd = NativeAdView(adgManagerViewController: adgManagerViewController, nativeAd: nativeAd)
-            adView.addSubview(rectAd!)
+            let rectAd = NativeAdView(adgManagerViewController: adgManagerViewController, nativeAd: nativeAd)
+            adView.addSubview(rectAd)
         } else if let nativeAd = mediationNativeAd as? FBNativeAd {
-            rectAd = FBNativeAdView(adgManagerViewController: adgManagerViewController, nativeAd: nativeAd)
-            adView.addSubview(rectAd!)
+            let rectAd = FBNativeAdView(adgManagerViewController: adgManagerViewController, nativeAd: nativeAd)
+            adView.addSubview(rectAd)
         }
     }
     
@@ -131,7 +124,7 @@ extension NativeAdViewController: ADGManagerViewControllerDelegate {
         
         // 不通とエラー過多のとき以外はリトライしてください
         switch code {
-        case .ADGErrorCodeNeedConnection, .ADGErrorCodeExceedLimit:
+        case .ADGErrorCodeNeedConnection, .ADGErrorCodeExceedLimit, .ADGErrorCodeNoAd:
             break
         default:
             adgManagerViewController.loadRequest()
