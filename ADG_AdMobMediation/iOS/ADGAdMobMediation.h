@@ -5,7 +5,7 @@
 
 @interface ADGAdMobMediation : NSObject <GADCustomEventBanner, ADGManagerViewControllerDelegate>
 
-@property (nonatomic) ADGManagerViewController *adg;
+@property (nonatomic, retain) ADGManagerViewController *adg;
 @property (nonatomic, retain) id nativeAd;  // FBNativeAd
 @property (nonatomic, unsafe_unretained) NSObject<GADCustomEventBannerDelegate> *delegate;
 
