@@ -208,7 +208,7 @@ public class ADGNativeAdHelper {
         //setBackgroundDrawableはDeprecatedですが、古いバージョンの端末サポートのため使用しています
         nativeAdButton.setBackgroundDrawable(borders);
         nativeAdButton.setText(
-                nativeAd.getCtatext().getValue() != null ?
+                nativeAd.getCtatext() != null ?
                         nativeAd.getCtatext().getValue() : "詳しくはこちら");
         Utilities.setOneLineAndEllipsisForTextView(nativeAdButton);
         nativeAd.setClickEvent(nativeAdButton); // ボタンへのタップ設定
