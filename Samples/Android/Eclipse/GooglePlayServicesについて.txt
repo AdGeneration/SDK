@@ -1,3 +1,0 @@
-本サンプルプロジェクトはGoogle Play Servicesの導入が行われていません。
-マニュアルを参考に設定をお願いいたします。
-https://github.com/AdGeneration/sdk/wiki/AndroidSDK%E5%B0%8E%E5%85%A5%E3%82%AC%E3%82%A4%E3%83%89#4-google-play-serivicesの設定
